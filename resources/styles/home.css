@@ -16,10 +16,12 @@ header .info-usuario{
   text-decoration: none;
 }
 
+#gamesDropdown{
+  border: 3px solid #29AC46;
+  border-radius: 50px;
+}
 
-/*SIDEBAR CARTEIRA*/
-
-/* SIDEBAR CARTEIRA - WALLET SIDEBAR */
+/* SIDEBAR CARTEIRA*/
 .info-carteira.offcanvas {
   color: #fff;
   padding: 2rem 1.5rem;
@@ -154,12 +156,48 @@ header .info-usuario{
     background-color: #29AC46;
 }
 
+.col.info .suporte.card a{
+  text-decoration: none;
+  background-color: white;
+  color: #0F185D;
+  font-size: small;
+  border-radius: 20px;
+  font-weight: 800;
+  padding: 5px;
+}
+
 .dropdown-toggle::after {
     border-top-color: #0F185D !important;
 }
 
+.col.info .responsabilidade.card:hover, .col.info .seguro.card:hover, .col.info .suporte.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 24px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.05);
+} 
+
 .row.row-cols-1{
   margin-bottom: 2rem;
+}
+
+.btn.deposite{
+  background-color: #29AC46;
+  border: 2px solid white;
+  color: white;
+  font-weight: 800;
+  transition: 0.3s ease;
+}
+
+.btn.play{
+  background-color: #0F185D;
+  border: 2px solid white;
+  color: white;
+  font-weight: 800;
+  transition: 0.3s ease;
+}
+
+.btn.play:hover, .btn.deposite:hover{
+  transform: scale(1.05);
+  color: white
 }
 
 /*JOGOS*/
@@ -234,5 +272,9 @@ header .info-usuario{
   width: 120px;
   height: 120px;
   object-fit: cover;
+}
+
+img.rounded-circle.gray-out{
+  filter: grayscale(100%);
 }
 

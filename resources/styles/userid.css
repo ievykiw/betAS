@@ -1,3 +1,15 @@
+body{
+  height: 100%;
+  width: auto;
+  background: linear-gradient(to right, #0F185D, #223B6F, #1F6C57, #29AC46);
+}
+
+body::after{
+  background: url(https://grainy-gradients.vercel.app/noise.svg);
+  opacity: 0.25;
+  z-index: 1;
+
+}
 
 #ddd{
     margin-right: 10px;
@@ -7,6 +19,45 @@
 #telefone{
     width: 70%;
 }
+
+/*TELA DE USUÁRIO*/
+
+.container.rounded{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: relative;
+}
+
+.container.rounded::before {
+  margin-top: 100px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/resources/assets/logo.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  background-size: 30rem;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+input.form-control,input[type="text"],input[type="email"],input[type="password"],input[type="number"] {
+  background: transparent !important;
+  border: 2px solid #00000076;
+  color: #0F185D;
+  box-shadow: none;
+}
+
+
 
 /*VERIFICAR SENHAS*/
 
@@ -29,3 +80,12 @@
 .col-md-12.mt-2.position-relative {
   position: relative;
 }
+
+/*NAVBAR*/
+
+.container-fluid {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+}
+
