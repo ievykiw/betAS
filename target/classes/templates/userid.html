@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="/resources/styles/userid.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home BetAS</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="container-fluid">
+            <div class="row border-bottom border-2 align-items-center justify-content-between">
+                <div
+                    class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
+                    <div class="d-flex align-items-center my-3 my-sm-0">
+                        <a href="/resources/pages/home.html" class="navbar-brand d-flex align-items-center w-50 p-3">
+                            <img src="/resources/assets/logo.svg" alt="logo" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container rounded bg-white">
+        <!-- Top Navigation Tabs -->
+        <ul class="nav nav-tabs mb-4" id="profileTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button"
+                    role="tab" aria-controls="info" aria-selected="true">Informações Pessoais</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="wallet-tab" data-bs-toggle="tab" data-bs-target="#wallet" type="button"
+                    role="tab" aria-controls="wallet" aria-selected="false">Minha Carteira</button>
+            </li>
+        </ul>
+        <div class="tab-content w-100" id="profileTabContent">
+            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <form class="p-3 py-5" id="formInfo" method="post" action="#">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Informações Pessoais</h4>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="labels">Nome</label><input type="text"
+                                        class="form-control" name="nome" value=""></div>
+                                <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text"
+                                        class="form-control" name="sobrenome" value=""></div>
+                            </div>
+                            <div class="row-md-6 mt-3">
+                                <div class="col-md-12">
+                                    <label class="labels">CPF</label>
+                                    <input type="text" class="form-control" id="cpf" name="cpf"
+                                        placeholder="000.000.000-00" value="">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels mt-2">Telefone</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ddd" name="ddd" maxlength="2"
+                                            placeholder="DDD" />
+                                        <input type="text" class="form-control" id="telefone" name="telefone"
+                                            placeholder="9 9999-9999" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="email"
+                                        class="form-control" name="email" placeholder="user@email.com" value=""></div>
+
+                                <div class="col-md-12 mt-2"><label class="labels">Senha Atual</label><input
+                                        type="password" class="form-control" id="senhaAtual" name="senhaAtual" value="">
+                                    <input type="checkbox" id="showSenhaAtual" onclick="funcshowSenhaAtual()">
+                                    Mostrar Senha
+                                </div>
+
+                                <div class="col-md-12 mt-2 position-relative">
+                                    <label class="labels" for="novaSenha">Nova Senha</label>
+                                    <input type="password" class="form-control" id="novaSenha" name="novaSenha"
+                                        autocomplete="new-password">
+                                    <input type="checkbox" id="showSenhaNova" onclick="funcshowSenhaNova()"> Mostrar
+                                    Nova
+                                    Senha
+
+                                    <span id="iconSenha" class="password-icon"></span>
+                                </div>
+
+                                <div class="col-md-12 mt-2 position-relative">
+                                    <label class="labels" for="confirmarSenha">Confirmar Nova Senha</label>
+                                    <input type="password" class="form-control" id="confirmarSenha"
+                                        name="confirmarSenha" autocomplete="new-password">
+                                    <input type="checkbox" id="showConfirmarSenha" onclick="funcshowConfirmarSenha()">
+                                    Mostrar Confirmação de Senha
+
+                                    <span id="iconConfirmar" class="password-icon"></span>
+                                </div>
+
+                            </div>
+                            <div class="mt-5 text-center"><button class="btn profile-button" type="submit">Salvar
+                                    Alterações</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Minha Carteira</h4>
+                            </div>
+                            <form class="mb-3">
+                                <h5 class="mb-3 mt-3">Depósito</h5>
+                                <div class="mb-3">
+                                    <label for="valorDeposito" class="form-label">Valor (mínimo R$30,00)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" class="form-control" id="valorDeposito"
+                                            name="valorDeposito" min="30" step="0.01" placeholder="30.00">
+                                    </div>
+                                </div>
+                                <button class="w-100 btn btn-lg deposit" type="button" id="depositBtn">Realizar
+                                    Depósito</button>
+
+                                <div class="modal fade" id="tokenModal" tabindex="-1" aria-labelledby="tokenModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-success text-white">
+                                                <h5 class="modal-title" id="tokenModalLabel">Confirmação de Depósito
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Valor do depósito: <span id="modalDepositValue"
+                                                        class="fw-bold text-success"></span></p>
+                                                <div class="mb-3">
+                                                    <label for="depositTokenInput" class="form-label">Insira o código do
+                                                        token</label>
+                                                    <input type="text" class="form-control" id="depositTokenInput"
+                                                        placeholder="Token de confirmação">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-success"
+                                                    id="confirmDepositBtn">Confirmar Depósito</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="mb-3 mt-4">Saque</h5>
+                                <div class="mb-3">
+                                    <label for="valorSaque" class="form-label">Valor</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" class="form-control" id="valorSaque" name="valorSaque"
+                                            min="0" step="0.01" placeholder="0.00">
+                                    </div>
+                                </div>
+                                <button class="w-100 btn btn-lg cash" type="button" id="withdrawBtn">Realizar
+                                    Saque</button>
+
+                                <div class="modal fade" id="withdrawModal" tabindex="-1"
+                                    aria-labelledby="withdrawModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-primary text-white">
+                                                <h5 class="modal-title" id="withdrawModalLabel">Confirmação de Saque
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Valor do saque: <span id="modalWithdrawValue"
+                                                        class="fw-bold text-primary"></span></p>
+                                                <div class="mb-3">
+                                                    <label for="withdrawTokenInput" class="form-label">Insira o código
+                                                        do token</label>
+                                                    <input type="text" class="form-control" id="withdrawTokenInput"
+                                                        placeholder="Token de confirmação">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="confirmWithdrawBtn">Confirmar Saque</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <h5 class="mb-3 d-flex justify-content-between align-items-center">
+                                Histórico de Transações
+                                <span class="badge rounded-pill">3</span>
+                            </h5>
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Transação: <span class="text-body-secondary">Saque</span></h6>
+                                        <small class="text-body-secondary">Id: <span
+                                                class="text-body-secondary">12437856</span></small>
+                                    </div>
+                                    <span class="text-body-secondary">R$40</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Transação: <span class="text-body-secondary">Saque</span></h6>
+                                        <small class="text-body-secondary">Id: <span
+                                                class="text-body-secondary">57824930</span></small>
+                                    </div>
+                                    <span class="text-body-secondary">R$10</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Transação: <span class="text-body-secondary">Depósito</span>
+                                        </h6>
+                                        <small class="text-body-secondary">Id: <span
+                                                class="text-body-secondary">62750893</span></small>
+                                    </div>
+                                    <span class="text-body-secondary">R$10</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (R$)</span>
+                                    <strong>R$20</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <!-- MODAL DEPÓSITO E SAQUE -->
+    <script>
+        $(document).ready(function () {
+            var depositModal = new bootstrap.Modal(document.getElementById('tokenModal'));
+            var withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'));
+
+            $('#depositBtn').on('click', function (e) {
+                e.preventDefault();
+                var depositValue = $('#valorDeposito').val();
+                if (depositValue === "" || isNaN(depositValue) || parseFloat(depositValue) < 30) {
+                    alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
+                    return;
+                }
+                $('#modalDepositValue').text('R$ ' + parseFloat(depositValue).toFixed(2));
+                $('#depositTokenInput').val("");
+                depositModal.show();
+            });
+
+            $('#confirmDepositBtn').on('click', function () {
+                var token = $('#depositTokenInput').val();
+                var depositValue = $('#valorDeposito').val();
+                if (token.trim() === "") {
+                    alert("Por favor, insira o código do token.");
+                    return;
+                }
+
+                console.log('Depósito de R$ ' + parseFloat(depositValue).toFixed(2) + ' confirmado com token: ' + token);
+                depositModal.hide();
+            });
+
+            $('#withdrawBtn').on('click', function (e) {
+                e.preventDefault();
+                var withdrawValue = $('#valorSaque').val();
+                if (withdrawValue === "" || isNaN(withdrawValue) || parseFloat(withdrawValue) <= 0) {
+                    alert("O valor do saque não pode ser vazio ou zero.");
+                    return;
+                }
+                $('#modalWithdrawValue').text('R$ ' + parseFloat(withdrawValue).toFixed(2));
+                $('#withdrawTokenInput').val("");
+                withdrawModal.show();
+            });
+
+            $('#confirmWithdrawBtn').on('click', function () {
+                var token = $('#withdrawTokenInput').val();
+                var withdrawValue = $('#valorSaque').val();
+                if (token.trim() === "") {
+                    alert("Por favor, insira o código do token.");
+                    return;
+                }
+
+                console.log('Saque de R$ ' + parseFloat(withdrawValue).toFixed(2) + ' confirmado com token: ' + token);
+                withdrawModal.hide();
+            });
+        });
+    </script>
+
+    <!--MASCARAR INFORMACOES-->
+
+    <script>
+        $(document).ready(function () {
+            $('#ddd').mask('00');
+            $('#telefone').mask('9 0000-0000');
+
+            $('#cpf').mask('000.000.000-00', {
+                reverse: true,
+                translation: {
+                    '0': { pattern: /[0-9]/, optional: true }
+                }
+            });
+
+            $('#cpf').on('blur', function () {
+                var cpf = $(this).val().replace(/\D/g, '');
+                $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
+            });
+        });
+    </script>
+
+    <!--VERIFICAR SENHAS-->
+
+    <script>
+        $(document).ready(function () {
+            function updatePasswordValidation() {
+                var senha = $('#novaSenha').val();
+                var confirmar = $('#confirmarSenha').val();
+                var okIcon = '<svg width="24" height="24" fill="#28a745" viewBox="0 0 24 24"><path d="M20.285 6.709l-11.285 11.285-5.285-5.285 1.415-1.415 3.87 3.87 9.87-9.87z"/></svg>';
+                var errorIcon = '<svg width="24" height="24" fill="#dc3545" viewBox="0 0 24 24"><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95 1.414-1.414z"/></svg>';
+                if (senha.length > 0 && confirmar.length > 0) {
+                    if (senha === confirmar) {
+                        $('#novaSenha, #confirmarSenha').removeClass('password-error').addClass('password-ok');
+                        $('#iconSenha, #iconConfirmar').html(okIcon);
+                    } else {
+                        $('#novaSenha, #confirmarSenha').removeClass('password-ok').addClass('password-error');
+                        $('#iconSenha, #iconConfirmar').html(errorIcon);
+                    }
+                } else {
+                    $('#novaSenha, #confirmarSenha').removeClass('password-ok password-error');
+                    $('#iconSenha, #iconConfirmar').html('');
+                }
+            }
+            $('#novaSenha, #confirmarSenha').on('input', updatePasswordValidation);
+        });
+    </script>
+
+    <!--COLETA DAS INFORMAÇÕES-->
+
+    <script>
+        $(document).ready(function () {
+            $('#formInfo').on('submit', function (e) {
+                e.preventDefault();
+                var data = {
+                    nome: $('input[name="nome"]').val(),
+                    sobrenome: $('input[name="sobrenome"]').val(),
+                    cpf: $('input[name="cpf"]').val(),
+                    ddd: $('input[name="ddd"]').val(),
+                    telefone: $('input[name="telefone"]').val(),
+                    email: $('input[name="email"]').val(),
+                    senhaAtual: $('input[name="senhaAtual"]').val(),
+                    novaSenha: $('input[name="novaSenha"]').val(),
+                    confirmarSenha: $('input[name="confirmarSenha"]').val()
+                };
+                console.log(data);
+                alert('Informações salvas com sucesso!');
+            });
+        });
+    </script>
+
+    <!--FUNÇÃO MOSTRAR SENHA-->
+    <script>
+        function funcshowSenhaAtual() {
+            var senhaAtual = document.getElementById("senhaAtual");
+            if (senhaAtual.type === "password") {
+                senhaAtual.type = "text";
+            } else {
+                senhaAtual.type = "password";
+            }
+        }
+
+        function funcshowSenhaNova() {
+            var novaSenha = document.getElementById("novaSenha");
+            if (novaSenha.type === "password") {
+                novaSenha.type = "text";
+            } else {
+                novaSenha.type = "password";
+            }
+        }
+
+        function funcshowConfirmarSenha() {
+            var confirmarSenha = document.getElementById("confirmarSenha");
+            if (confirmarSenha.type === "password") {
+                confirmarSenha.type = "text";
+            } else {
+                confirmarSenha.type = "password";
+            }
+
+        }
+    </script>
+
+    <!--FUNÇÃO MOSTRAR CARTEIRA-->
+    <script>
+        $(document).ready(function () {
+            // Verifica se a URL contém o fragmento #wallet
+            if (window.location.hash === '#wallet') {
+                // Ativa a aba da carteira
+                $('#wallet-tab').tab('show');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
