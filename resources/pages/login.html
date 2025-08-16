@@ -3,7 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="/resources/styles/login.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
     <meta charset="UTF-8">
@@ -22,39 +23,96 @@
                                 <div class="card-body p-md-5 mx-md-4">
 
                                     <div class="text-center">
-                                        <img src="/resources/assets/logo.svg"
-                                            style="width: 185px;" alt="logo">
+                                        <img src="/resources/assets/logo.svg" style="width: 185px;" alt="logo">
                                         <h4 class="mt-1 mb-5 pb-1">Olá, nós somos os betAS!</h4>
                                     </div>
-
-                                    <form>
-                                        <p>Faça login / Crie uma Nova conta</p>
-
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="email" id="form2Example11" class="form-control"/>
-                                            <label class="form-label" for="form2Example11">Usuário</label>
+                                    <!-- Tabs for Login and Register -->
+                                    <ul class="nav nav-tabs mb-4" id="loginTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab"
+                                                data-bs-target="#login" type="button" role="tab" aria-controls="login"
+                                                aria-selected="true">Login</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="register-tab" data-bs-toggle="tab"
+                                                data-bs-target="#register" type="button" role="tab"
+                                                aria-controls="register" aria-selected="false">Criar Conta</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="loginTabContent">
+                                        <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                            aria-labelledby="login-tab">
+                                            <form id="loginForm">
+                                                <p>Faça login</p>
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    <input type="text" id="username" class="form-control" />
+                                                    <label class="form-label" for="username">Usuário</label>
+                                                </div>
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    <input type="password" id="userPassword" class="form-control" />
+                                                    <label class="form-label" for="userPassword">Senha</label>
+                                                </div>
+                                                <div
+                                                    class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+                                                    <button data-mdb-button-init data-mdb-ripple-init
+                                                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                                        type="submit">Log in</button>
+                                                    <button type="button" class="btn btn-link text-muted"
+                                                        onclick="alert('Puts, também esqueci, foi mal! 👀')">Esqueceu a
+                                                        Senha?</button>
+                                                </div>
+                                            </form>
                                         </div>
-
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" id="form2Example22" class="form-control" />
-                                            <label class="form-label" for="form2Example22">Senha</label>
+                                        <div class="tab-pane fade" id="register" role="tabpanel"
+                                            aria-labelledby="register-tab">
+                                            <form id="registerForm" class="p-2">
+                                                <p>Crie uma Nova conta</p>
+                                                <div class="mb-2"><label class="form-label">Nome</label><input
+                                                        type="text" class="form-control" name="nome" required></div>
+                                                <div class="mb-2"><label class="form-label">Sobrenome</label><input
+                                                        type="text" class="form-control" name="sobrenome" required>
+                                                </div>
+                                                <div class="mb-2"><label class="form-label">CPF</label><input
+                                                        type="text" class="form-control" name="cpf" id="cpfReg"
+                                                        required></div>
+                                                <div class="mb-2"><label class="form-label">DDD</label><input
+                                                        type="text" class="form-control" name="ddd" id="dddReg"
+                                                        maxlength="2" required></div>
+                                                <div class="mb-2"><label class="form-label">Telefone</label><input
+                                                        type="text" class="form-control" name="telefone"
+                                                        id="telefoneReg" required></div>
+                                                <div class="mb-2"><label class="form-label">Email</label><input
+                                                        type="email" class="form-control" name="email" required></div>
+                                                <div class="mb-2 position-relative">
+                                                    <label class="form-label">Nova Senha</label>
+                                                    <input type="password" class="form-control" name="novaSenha"
+                                                        id="novaSenhaReg" autocomplete="new-password" required>
+                                                    <span id="iconSenhaReg" class="password-icon"></span>
+                                                </div>
+                                                <div class="mb-2 position-relative">
+                                                    <label class="form-label">Confirmar Nova Senha</label>
+                                                    <input type="password" class="form-control" name="confirmarSenha"
+                                                        id="confirmarSenhaReg" autocomplete="new-password" required>
+                                                    <span id="iconConfirmarReg" class="password-icon"></span>
+                                                </div>
+                                                <div
+                                                    class="text-center pt-1 mb-3 pb-1 d-flex flex-column align-items-center">
+                                                    <button type="submit" class="btn btn-success">Registrar</button>
+                                                </div>
+                                            </form>
                                         </div>
-
-                                        <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
-                                            <button data-mdb-button-init data-mdb-ripple-init
-                                                class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                                type="button" href="/views/pages/home.html">Log in</button>
-                                            <button type="button" class="btn btn-link text-muted" onclick="alert('Puts, também esqueci, foi mal! 👀')">Esqueceu a Senha?</button>
-                                        </div>
-
-                                    </form>
+                                    </div>
 
                                 </div>
                             </div>
                             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                                     <h4 class="mb-4">Nós somos mais que uma casa de aposta...</h4>
-                                    <p class="small mb-0">Somos sua nova oportunidade de mudar de vida, apostando com responsabilidade e segurança. Com um jogo simples de entender, você vai se divertir e ainda garantir uma renda extra para o final de semana. Uma equipe dedicada a mudar a realidade de inúmeros brasileiros, estamos dispostos a ajudar você a alcançar seus objetivos.</p>
+                                    <p class="small mb-0">Somos sua nova oportunidade de mudar de vida, apostando com
+                                        responsabilidade e segurança. Com um jogo simples de entender, você vai se
+                                        divertir e ainda garantir uma renda extra para o final de semana. Uma equipe
+                                        dedicada a mudar a realidade de inúmeros brasileiros, estamos dispostos a ajudar
+                                        você a alcançar seus objetivos.</p>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +121,75 @@
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#dddReg').mask('00');
+            $('#telefoneReg').mask('9 0000-0000');
+            $('#cpfReg').mask('000.000.000-00', {
+                reverse: true,
+                translation: {
+                    '0': { pattern: /[0-9]/, optional: true }
+                }
+            });
+
+            function updatePasswordValidationReg() {
+                var senha = $('#novaSenhaReg').val();
+                var confirmar = $('#confirmarSenhaReg').val();
+                var okIcon = '<svg width="24" height="24" fill="#28a745" viewBox="0 0 24 24"><path d="M20.285 6.709l-11.285 11.285-5.285-5.285 1.415-1.415 3.87 3.87 9.87-9.87z"/></svg>';
+                var errorIcon = '<svg width="24" height="24" fill="#dc3545" viewBox="0 0 24 24"><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95 1.414-1.414z"/></svg>';
+                if (senha.length > 0 && confirmar.length > 0) {
+                    if (senha === confirmar) {
+                        $('#novaSenhaReg, #confirmarSenhaReg').removeClass('password-error').addClass('password-ok');
+                        $('#iconSenhaReg, #iconConfirmarReg').html(okIcon);
+                    } else {
+                        $('#novaSenhaReg, #confirmarSenhaReg').removeClass('password-ok').addClass('password-error');
+                        $('#iconSenhaReg, #iconConfirmarReg').html(errorIcon);
+                    }
+                } else {
+                    $('#novaSenhaReg, #confirmarSenhaReg').removeClass('password-ok password-error');
+                    $('#iconSenhaReg, #iconConfirmarReg').html('');
+                }
+            }
+
+            $('#novaSenhaReg, #confirmarSenhaReg').on('input', updatePasswordValidationReg);
+
+            $('#registerForm').on('submit', function (e) {
+                e.preventDefault();
+                var data = {
+                    nome: $('input[name="nome"]', this).val(),
+                    sobrenome: $('input[name="sobrenome"]', this).val(),
+                    cpf: $('input[name="cpf"]', this).val(),
+                    ddd: $('input[name="ddd"]', this).val(),
+                    telefone: $('input[name="telefone"]', this).val(),
+                    email: $('input[name="email"]', this).val(),
+                    novaSenha: $('input[name="novaSenha"]', this).val(),
+                    confirmarSenha: $('input[name="confirmarSenha"]', this).val()
+                };
+                if (data.novaSenha !== data.confirmarSenha) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+                console.log('Dados de registro:', data);
+            });
+
+            // Login form submit: log info to console
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                var loginData = {
+                    username: $('#username').val(),
+                    password: $('#userPassword').val()
+                };
+                console.log('Dados de login:', loginData);
+            });
+        });
+    </script>
 </body>
 
 </html>

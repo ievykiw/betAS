@@ -196,12 +196,12 @@
                         </li>
                         <li>
                             <a href="#" class="saldo p-2 mx-1" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-                                <svg width="30" height="30">
-                                    <use xlink:href="#wallet"></use>
-                                    <span style="width: 24px; color: #0F185D;">R$20,00</span>
-                                </svg>
-                            </a>
+                                id="walletLink">
+                                    <svg width="30" height="30">
+                                        <use xlink:href="#wallet"></use>
+                                        <span style="width: 24px; color: #0F185D;">R$20,00</span>
+                                    </svg>
+                                </a>
                         </li>
                     </ul>
                 </div>
@@ -353,7 +353,6 @@
                 var submitBtn = $(document.activeElement);
 
                 if (submitBtn.text().trim() === "Realizar Depósito") {
-                    // Verifica se o valor do depósito é vazio ou menor que 30
                     if (deposito === "" || isNaN(deposito) || parseFloat(deposito) < 30) {
                         alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
                         e.preventDefault();
@@ -370,8 +369,23 @@
                 }
             });
         });
-
     </script>
+
+        <script>
+            $(document).ready(function () {
+                $('#walletLink').on('click', function (e) {
+                    e.preventDefault();
+                    // Switch to wallet tab if on userid.html
+                    if (window.location.pathname.includes('userid.html')) {
+                        $('#wallet-tab').tab('show');
+                    } else {
+                        window.location.href = '/resources/pages/userid.html#wallet';
+                    }
+                });
+            });
+        </script>
+
+
 </body>
 
 

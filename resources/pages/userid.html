@@ -84,7 +84,8 @@
                                     <label class="labels" for="novaSenha">Nova Senha</label>
                                     <input type="password" class="form-control" id="novaSenha" name="novaSenha"
                                         autocomplete="new-password">
-                                    <input type="checkbox" id="showSenhaNova" onclick="funcshowSenhaNova()"> Mostrar Nova
+                                    <input type="checkbox" id="showSenhaNova" onclick="funcshowSenhaNova()"> Mostrar
+                                    Nova
                                     Senha
 
                                     <span id="iconSenha" class="password-icon"></span>
@@ -401,6 +402,17 @@
             }
 
         }
+    </script>
+
+    <!--FUNÇÃO MOSTRAR CARTEIRA-->
+    <script>
+        $(document).ready(function () {
+            // Verifica se a URL contém o fragmento #wallet
+            if (window.location.hash === '#wallet') {
+                // Ativa a aba da carteira
+                $('#wallet-tab').tab('show');
+            }
+        });
     </script>
 
 </body>

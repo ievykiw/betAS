@@ -2,14 +2,33 @@ section{
     background-color: #0f122820 !important;
 }
 
+.card{
+    border: none;
+}
+
+body {
+  background: linear-gradient(56deg,#29ac46,#000000,#0f185d);
+  background-size: 180% 180%;
+  animation: gradient-animation 9s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 .gradient-custom-2 {
-    /* fallback for old browsers */
+
     background: #fccb90;
-
-    /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, #0F185D, #223B6F, #1F6C57, #29AC46);
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #0F185D, #223B6F, #1F6C57, #29AC46);
 }
 
