@@ -24,7 +24,7 @@
                     <path stroke-linecap="round" d="M17.97 20c-.16-2.892-1.045-5-5.97-5s-5.81 2.108-5.97 5" />
                 </g>
             </symbol>
-            
+
             <symbol xmlns="http://www.w3.org/2000/svg" id="wallet" viewBox="0 0 24 24">
                 <path d="M6 8H10" stroke="#0F185D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 </path>
@@ -124,8 +124,38 @@
                                 step="0.01" placeholder="30.00">
                         </div>
                     </div>
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Realizar Depósito</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="button" id="depositBtn">Realizar Depósito</button>
 
+
+                    <div class="modal fade" id="tokenModal" tabindex="-1" aria-labelledby="tokenModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-success text-white">
+                                    <h5 class="modal-title" id="tokenModalLabel">Confirmação de Depósito
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Valor do depósito: <span id="modalDepositValue"
+                                            class="fw-bold text-success"></span></p>
+                                    <div class="mb-3">
+                                        <label for="depositTokenInput" class="form-label token">Insira o código do
+                                            token</label>
+                                        <input type="text" class="form-control" id="depositTokenInput"
+                                            placeholder="Token de confirmação">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" id="confirmDepositBtn">Confirmar
+                                        Depósito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
                         <span class="saque">Saque</span>
@@ -138,7 +168,37 @@
                                 step="0.01" placeholder="0.00">
                         </div>
                     </div>
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Realizar Saque</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="button" id="withdrawBtn">Realizar Saque</button>
+
+                    <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary text-white">
+                                    <h5 class="modal-title" id="withdrawModalLabel">Confirmação de Saque
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Valor do saque: <span id="modalWithdrawValue"
+                                            class="fw-bold text-primary"></span></p>
+                                    <div class="mb-3">
+                                        <label for="withdrawTokenInput" class="form-label token">Insira o código
+                                            do token</label>
+                                        <input type="text" class="form-control" id="withdrawTokenInput"
+                                            placeholder="Token de confirmação">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" id="confirmWithdrawBtn">Confirmar
+                                        Saque</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </form>
 
@@ -379,26 +439,31 @@
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">
                             <a href="category-dado.html" class="nav-link swiper-slide text-center">
-                                <img src="/resources/assets/dados-jogos.jpg" class="rounded-circle" alt="Dados Thumbnail">
+                                <img src="/resources/assets/dados-jogos.jpg" class="rounded-circle"
+                                    alt="Dados Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Jogo dos Dados</h4>
                             </a>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/roleta-casino.png" class="rounded-circle gray-out" alt="Roleta Thumbnail">
+                                <img src="/resources/assets/roleta-casino.png" class="rounded-circle gray-out"
+                                    alt="Roleta Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Roleta</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/blackjack-casino.png" class="rounded-circle gray-out" alt="Blackjack Thumbnail">
+                                <img src="/resources/assets/blackjack-casino.png" class="rounded-circle gray-out"
+                                    alt="Blackjack Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Blackjack</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/poker-casino.jpg" class="rounded-circle gray-out" alt="Poker Thumbnail">
+                                <img src="/resources/assets/poker-casino.jpg" class="rounded-circle gray-out"
+                                    alt="Poker Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Poker</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/bingo-casino.png" class="rounded-circle gray-out" alt="Bingo Thumbnail">
+                                <img src="/resources/assets/bingo-casino.png" class="rounded-circle gray-out"
+                                    alt="Bingo Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Bingo</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
@@ -435,37 +500,59 @@
         });
     </script>
 
-    <!--VERIFICAR VALORES-->
-
+    <!-- MODAL DEPÓSITO E SAQUE -->
     <script>
         $(document).ready(function () {
-            $('form').on('submit', function (e) {
-                var $form = $(this);
-                var deposito = $form.find('#valorDeposito').val();
-                var saque = $form.find('#valorSaque').val();
-                var submitBtn = $(document.activeElement);
+            var depositModal = new bootstrap.Modal(document.getElementById('tokenModal'));
+            var withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'));
 
-                // Verifica se o botão de depósito foi clicado
-                if (submitBtn.text().trim() === "Realizar Depósito") {
-                    // Verifica se o valor do depósito é vazio ou menor que 30
-                    if (deposito === "" || isNaN(deposito) || parseFloat(deposito) < 30) {
-                        alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
-                        e.preventDefault();
-                        return false; // Previne o envio do formulário
-                    }
+            $('#depositBtn').on('click', function (e) {
+                e.preventDefault();
+                var depositValue = $('#valorDeposito').val();
+                if (depositValue === "" || isNaN(depositValue) || parseFloat(depositValue) < 30) {
+                    alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
+                    return;
+                }
+                $('#modalDepositValue').text('R$ ' + parseFloat(depositValue).toFixed(2));
+                $('#depositTokenInput').val("");
+                depositModal.show();
+            });
+
+            $('#confirmDepositBtn').on('click', function () {
+                var token = $('#depositTokenInput').val();
+                var depositValue = $('#valorDeposito').val();
+                if (token.trim() === "") {
+                    alert("Por favor, insira o código do token.");
+                    return;
                 }
 
-                // Verifica se o botão de saque foi clicado
-                if (submitBtn.text().trim() === "Realizar Saque") {
-                    // Verifica se o valor do saque é vazio ou menor ou igual a zero
-                    if (saque === "" || isNaN(saque) || parseFloat(saque) <= 0) {
-                        alert("O valor do saque não pode ser vazio ou zero.");
-                        e.preventDefault();
-                        return false; // Previne o envio do formulário
-                    }
+                console.log('Depósito de R$ ' + parseFloat(depositValue).toFixed(2) + ' confirmado com token: ' + token);
+                depositModal.hide();
+            });
+
+            $('#withdrawBtn').on('click', function (e) {
+                e.preventDefault();
+                var withdrawValue = $('#valorSaque').val();
+                if (withdrawValue === "" || isNaN(withdrawValue) || parseFloat(withdrawValue) <= 0) {
+                    alert("O valor do saque não pode ser vazio ou zero.");
+                    return;
                 }
+                $('#modalWithdrawValue').text('R$ ' + parseFloat(withdrawValue).toFixed(2));
+                $('#withdrawTokenInput').val("");
+                withdrawModal.show();
+            });
+
+            $('#confirmWithdrawBtn').on('click', function () {
+                var token = $('#withdrawTokenInput').val();
+                var withdrawValue = $('#valorSaque').val();
+                if (token.trim() === "") {
+                    alert("Por favor, insira o código do token.");
+                    return;
+                }
+
+                console.log('Saque de R$ ' + parseFloat(withdrawValue).toFixed(2) + ' confirmado com token: ' + token);
+                withdrawModal.hide();
             });
         });
-
     </script>
 </body>

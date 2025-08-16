@@ -46,50 +46,64 @@
             <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
                 <div class="row">
                     <div class="col-md-8 mx-auto">
-                        <div class="p-3 py-5">
+                        <form class="p-3 py-5" id="formInfo" method="post" action="#">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Informações Pessoais</h4>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels">Nome</label><input type="text"
-                                        class="form-control" value=""></div>
+                                        class="form-control" name="nome" value=""></div>
                                 <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text"
-                                        class="form-control" value=""></div>
+                                        class="form-control" name="sobrenome" value=""></div>
                             </div>
                             <div class="row-md-6 mt-3">
                                 <div class="col-md-12">
                                     <label class="labels">CPF</label>
-                                    <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00"
-                                        value="">
+                                    <input type="text" class="form-control" id="cpf" name="cpf"
+                                        placeholder="000.000.000-00" value="">
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels mt-2">Telefone</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="ddd" maxlength="2"
+                                        <input type="text" class="form-control" id="ddd" name="ddd" maxlength="2"
                                             placeholder="DDD" />
-                                        <input type="text" class="form-control" id="telefone"
+                                        <input type="text" class="form-control" id="telefone" name="telefone"
                                             placeholder="9 9999-9999" />
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="email"
-                                        class="form-control" placeholder="user@email.com" value=""></div>
+                                        class="form-control" name="email" placeholder="user@email.com" value=""></div>
+
                                 <div class="col-md-12 mt-2"><label class="labels">Senha Atual</label><input
-                                        type="password" class="form-control" value=""></div>
+                                        type="password" class="form-control" id="senhaAtual" name="senhaAtual" value="">
+                                    <input type="checkbox" id="showSenhaAtual" onclick="funcshowSenhaAtual()">
+                                    Mostrar Senha
+                                </div>
+
                                 <div class="col-md-12 mt-2 position-relative">
                                     <label class="labels" for="novaSenha">Nova Senha</label>
-                                    <input type="password" class="form-control" id="novaSenha"
-                                        autocomplete="new-password"><span id="iconSenha" class="password-icon"></span>
+                                    <input type="password" class="form-control" id="novaSenha" name="novaSenha"
+                                        autocomplete="new-password">
+                                    <input type="checkbox" id="showSenhaNova" onclick="funcshowSenhaNova()"> Mostrar Nova
+                                    Senha
+
+                                    <span id="iconSenha" class="password-icon"></span>
                                 </div>
+
                                 <div class="col-md-12 mt-2 position-relative">
                                     <label class="labels" for="confirmarSenha">Confirmar Nova Senha</label>
                                     <input type="password" class="form-control" id="confirmarSenha"
-                                        autocomplete="new-password">
+                                        name="confirmarSenha" autocomplete="new-password">
+                                    <input type="checkbox" id="showConfirmarSenha" onclick="funcshowConfirmarSenha()">
+                                    Mostrar Confirmação de Senha
+
                                     <span id="iconConfirmar" class="password-icon"></span>
                                 </div>
+
                             </div>
-                            <div class="mt-5 text-center"><button class="btn profile-button"
-                                    type="button">Salvar Alterações</button></div>
-                        </div>
+                            <div class="mt-5 text-center"><button class="btn profile-button" type="submit">Salvar
+                                    Alterações</button></div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -110,7 +124,38 @@
                                             name="valorDeposito" min="30" step="0.01" placeholder="30.00">
                                     </div>
                                 </div>
-                                <button class="w-100 btn btn-lg deposit" type="submit">Realizar Depósito</button>
+                                <button class="w-100 btn btn-lg deposit" type="button" id="depositBtn">Realizar
+                                    Depósito</button>
+
+                                <div class="modal fade" id="tokenModal" tabindex="-1" aria-labelledby="tokenModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-success text-white">
+                                                <h5 class="modal-title" id="tokenModalLabel">Confirmação de Depósito
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Valor do depósito: <span id="modalDepositValue"
+                                                        class="fw-bold text-success"></span></p>
+                                                <div class="mb-3">
+                                                    <label for="depositTokenInput" class="form-label">Insira o código do
+                                                        token</label>
+                                                    <input type="text" class="form-control" id="depositTokenInput"
+                                                        placeholder="Token de confirmação">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-success"
+                                                    id="confirmDepositBtn">Confirmar Depósito</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <h5 class="mb-3 mt-4">Saque</h5>
                                 <div class="mb-3">
                                     <label for="valorSaque" class="form-label">Valor</label>
@@ -120,7 +165,38 @@
                                             min="0" step="0.01" placeholder="0.00">
                                     </div>
                                 </div>
-                                <button class="w-100 btn btn-lg cash" type="submit">Realizar Saque</button>
+                                <button class="w-100 btn btn-lg cash" type="button" id="withdrawBtn">Realizar
+                                    Saque</button>
+
+                                <div class="modal fade" id="withdrawModal" tabindex="-1"
+                                    aria-labelledby="withdrawModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-primary text-white">
+                                                <h5 class="modal-title" id="withdrawModalLabel">Confirmação de Saque
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Valor do saque: <span id="modalWithdrawValue"
+                                                        class="fw-bold text-primary"></span></p>
+                                                <div class="mb-3">
+                                                    <label for="withdrawTokenInput" class="form-label">Insira o código
+                                                        do token</label>
+                                                    <input type="text" class="form-control" id="withdrawTokenInput"
+                                                        placeholder="Token de confirmação">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="confirmWithdrawBtn">Confirmar Saque</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                             <h5 class="mb-3 d-flex justify-content-between align-items-center">
                                 Histórico de Transações
@@ -170,6 +246,61 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
+    <!-- MODAL DEPÓSITO E SAQUE -->
+    <script>
+        $(document).ready(function () {
+            var depositModal = new bootstrap.Modal(document.getElementById('tokenModal'));
+            var withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'));
+
+            $('#depositBtn').on('click', function (e) {
+                e.preventDefault();
+                var depositValue = $('#valorDeposito').val();
+                if (depositValue === "" || isNaN(depositValue) || parseFloat(depositValue) < 30) {
+                    alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
+                    return;
+                }
+                $('#modalDepositValue').text('R$ ' + parseFloat(depositValue).toFixed(2));
+                $('#depositTokenInput').val("");
+                depositModal.show();
+            });
+
+            $('#confirmDepositBtn').on('click', function () {
+                var token = $('#depositTokenInput').val();
+                var depositValue = $('#valorDeposito').val();
+                if (token.trim() === "") {
+                    alert("Por favor, insira o código do token.");
+                    return;
+                }
+
+                console.log('Depósito de R$ ' + parseFloat(depositValue).toFixed(2) + ' confirmado com token: ' + token);
+                depositModal.hide();
+            });
+
+            $('#withdrawBtn').on('click', function (e) {
+                e.preventDefault();
+                var withdrawValue = $('#valorSaque').val();
+                if (withdrawValue === "" || isNaN(withdrawValue) || parseFloat(withdrawValue) <= 0) {
+                    alert("O valor do saque não pode ser vazio ou zero.");
+                    return;
+                }
+                $('#modalWithdrawValue').text('R$ ' + parseFloat(withdrawValue).toFixed(2));
+                $('#withdrawTokenInput').val("");
+                withdrawModal.show();
+            });
+
+            $('#confirmWithdrawBtn').on('click', function () {
+                var token = $('#withdrawTokenInput').val();
+                var withdrawValue = $('#valorSaque').val();
+                if (token.trim() === "") {
+                    alert("Por favor, insira o código do token.");
+                    return;
+                }
+
+                console.log('Saque de R$ ' + parseFloat(withdrawValue).toFixed(2) + ' confirmado com token: ' + token);
+                withdrawModal.hide();
+            });
+        });
+    </script>
 
     <!--MASCARAR INFORMACOES-->
 
@@ -218,37 +349,60 @@
         });
     </script>
 
-    <!--VERIFICAR VALORES-->
+    <!--COLETA DAS INFORMAÇÕES-->
+
     <script>
         $(document).ready(function () {
-            $('form').on('submit', function (e) {
-                var $form = $(this);
-                var deposito = $form.find('#valorDeposito').val();
-                var saque = $form.find('#valorSaque').val();
-                var submitBtn = $(document.activeElement);
-
-                // Verifica se o botão de depósito foi clicado
-                if (submitBtn.text().trim() === "Realizar Depósito") {
-                    // Verifica se o valor do depósito é vazio ou menor que 30
-                    if (deposito === "" || isNaN(deposito) || parseFloat(deposito) < 30) {
-                        alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
-                        e.preventDefault();
-                        return false; // Previne o envio do formulário
-                    }
-                }
-
-                // Verifica se o botão de saque foi clicado
-                if (submitBtn.text().trim() === "Realizar Saque") {
-                    // Verifica se o valor do saque é vazio ou menor ou igual a zero
-                    if (saque === "" || isNaN(saque) || parseFloat(saque) <= 0) {
-                        alert("O valor do saque não pode ser vazio ou zero.");
-                        e.preventDefault();
-                        return false; // Previne o envio do formulário
-                    }
-                }
+            $('#formInfo').on('submit', function (e) {
+                e.preventDefault();
+                var data = {
+                    nome: $('input[name="nome"]').val(),
+                    sobrenome: $('input[name="sobrenome"]').val(),
+                    cpf: $('input[name="cpf"]').val(),
+                    ddd: $('input[name="ddd"]').val(),
+                    telefone: $('input[name="telefone"]').val(),
+                    email: $('input[name="email"]').val(),
+                    senhaAtual: $('input[name="senhaAtual"]').val(),
+                    novaSenha: $('input[name="novaSenha"]').val(),
+                    confirmarSenha: $('input[name="confirmarSenha"]').val()
+                };
+                console.log(data);
+                alert('Informações salvas com sucesso!');
             });
         });
     </script>
+
+    <!--FUNÇÃO MOSTRAR SENHA-->
+    <script>
+        function funcshowSenhaAtual() {
+            var senhaAtual = document.getElementById("senhaAtual");
+            if (senhaAtual.type === "password") {
+                senhaAtual.type = "text";
+            } else {
+                senhaAtual.type = "password";
+            }
+        }
+
+        function funcshowSenhaNova() {
+            var novaSenha = document.getElementById("novaSenha");
+            if (novaSenha.type === "password") {
+                novaSenha.type = "text";
+            } else {
+                novaSenha.type = "password";
+            }
+        }
+
+        function funcshowConfirmarSenha() {
+            var confirmarSenha = document.getElementById("confirmarSenha");
+            if (confirmarSenha.type === "password") {
+                confirmarSenha.type = "text";
+            } else {
+                confirmarSenha.type = "password";
+            }
+
+        }
+    </script>
+
 </body>
 
 </html>
