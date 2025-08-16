@@ -3,6 +3,11 @@ body{
 }
 
 /*HEADER*/
+
+#navbar{
+  background-color: white;
+}
+
 header .info-usuario{
   display: flex;
   flex-direction: row;
