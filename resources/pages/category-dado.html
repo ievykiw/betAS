@@ -209,7 +209,9 @@
         </div>
     </header>
 
-    <div class="container">
+    <!--Dado utilizado: https://codepen.io/arnav-dev-git/pen/RNPXrQp (Alguns ajustes foram realizados visando comportar o objetivo do projeto)-->
+    
+    <div class="container dados">
         <div class="blue-cubes">
             <!-- Dado 1 -->
             <div class="cube 1 left">
@@ -239,6 +241,28 @@
                 <div class="face top dots-2"><span class="red">•</span><span class="black">•</span></div>
                 <div class="face bottom dots-5"><span class="black">•</span><span class="black">•</span><span
                         class="red">•</span><span class="black">•</span><span class="black">•</span></div>
+            </div>
+        </div>
+        <div class="dice-results my-4 py-3 px-3 rounded-3 shadow-sm">
+            <div class="row text-center">
+                <div class="col-12 col-md-4 mb-2 mb-md-0">
+                    <div class="result-unit p-3 rounded-2">
+                        <h6 class="fw-bold text-uppercase mb-2">Resultado Unitário</h6>
+                        <div class="fs-4 fw-bold" id="result-unit"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-2 mb-md-0">
+                    <div class="result-categoric p-3 rounded-2">
+                        <h6 class="fw-bold text-uppercase mb-2">Resultado por Categoria</h6>
+                        <div class="fs-4 fw-bold" id="result-categoric"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="result-global p-3 rounded-2">
+                        <h6 class="fw-bold text-uppercase mb-2">Resultado Global</h6>
+                        <div class="fs-4 fw-bold" id="result-global"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="green-cubes">
@@ -275,9 +299,9 @@
     </div>
 
     <div class="controls">
-        <button class='roll'>Roll</button>
+        <button class='roll btn btn-lg px-5 py-3 fw-bold shadow'>Rolar Dados</button>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -307,9 +331,10 @@
             cubes.forEach(cube => results.push(rollDice(cube)));
             const result_dices_blue = results[0] + results[1];
             const result_dices_red = results[2] + results[3];
-            console.log("Resultados:", results);
-            console.log("Resultado dos dados azuis:", result_dices_blue);
-            console.log("Resultado dos dados vermelhos:", result_dices_red);
+
+            document.getElementById('result-unit').textContent = results.join(' | ');
+            document.getElementById('result-categoric').textContent = `Azul: ${result_dices_blue} | Verde: ${result_dices_red}`;
+            document.getElementById('result-global').textContent = result_dices_blue + result_dices_red;
         };
 
         window.onload = () => {
@@ -327,23 +352,20 @@
                 var saque = $form.find('#valorSaque').val();
                 var submitBtn = $(document.activeElement);
 
-                // Verifica se o botão de depósito foi clicado
                 if (submitBtn.text().trim() === "Realizar Depósito") {
                     // Verifica se o valor do depósito é vazio ou menor que 30
                     if (deposito === "" || isNaN(deposito) || parseFloat(deposito) < 30) {
                         alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
                         e.preventDefault();
-                        return false; // Previne o envio do formulário
+                        return false;
                     }
                 }
 
-                // Verifica se o botão de saque foi clicado
                 if (submitBtn.text().trim() === "Realizar Saque") {
-                    // Verifica se o valor do saque é vazio ou menor ou igual a zero
                     if (saque === "" || isNaN(saque) || parseFloat(saque) <= 0) {
                         alert("O valor do saque não pode ser vazio ou zero.");
                         e.preventDefault();
-                        return false; // Previne o envio do formulário
+                        return false;
                     }
                 }
             });

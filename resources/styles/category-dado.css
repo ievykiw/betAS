@@ -252,3 +252,29 @@ button:hover {
 button:active {
   background: #555;
 }
+
+/*RESULTADOS*/
+
+.dice-results {
+  background-color: #ffffff00;
+  background-image: 
+    linear-gradient(#ffffff22, #ffffff22),
+    url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+  background-blend-mode: multiply;
+}
+
+.controls button{
+  color: white;
+  background-color: #0F185D;
+  border: 2px solid rgba(0, 81, 255, 0.279);
+  transition: all 0.3s ease;
+}
+
+.controls button:hover {
+  transform: scale(1.05);
+  background-color: #29ac46;
+  border: 2px solid rgba(41, 172, 69, 0.2);
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 81, 255, 0.2);
+}
+
