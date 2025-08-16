@@ -1,3 +1,7 @@
+body{
+  background-color: white;
+}
+
 /*HEADER*/
 header .info-usuario{
   display: flex;
@@ -108,7 +112,7 @@ header .info-usuario{
 }
 
 .info-carteira .list-group-item .text-body-secondary {
-  color: #b8c6e0 !important;
+  color: white !important;
 }
 
 .info-carteira .badge.bg-primary {
@@ -202,12 +206,140 @@ header .info-usuario{
 
 /*JOGOS*/
 
+#container-games{
+  padding-top: 5rem;
+  height: 100vh;
+}
+
+#menu-jogos {
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(15,24,93,0.08);
+}
+
+#menu-jogos .section-header {
+  background: #0F185D;
+  border-radius: 18px;
+  padding: 1.5rem 2rem;
+  color: white;
+  box-shadow: 0 2px 12px rgba(15,24,93,0.10);
+  margin-bottom: 2rem;
+}
+#menu-jogos .section-title {
+  color: white;
+  font-weight: 800;
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
+}
+
+#menu-jogos .btn-primary {
+  background: #29AC46;
+  color: white;
+  border: none;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.6rem 1.6rem;
+  box-shadow: 0 2px 8px rgba(41,172,70,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+#menu-jogos .btn-primary:hover {
+  background: white;
+  color: #1F6C57;
+}
+#menu-jogos .swiper-buttons .btn {
+  background: #29AC46;
+  color: #0F185D;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 2px 8px rgba(249,212,74,0.10);
+  margin-left: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+#menu-jogos .swiper-buttons .btn:hover {
+  background: white;
+  color: #29AC46;
+}
+.category-carousel {
+  height: 80vh;
+}
+
+.category-carousel .swiper-slide {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(15,24,93,0.08);
+  margin: 0 10px;
+  padding: 2rem 0 1rem 0;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.category-carousel .swiper-slide:not(.coming-soon):hover {
+  box-shadow: 0 8px 32px rgba(41,172,70,0.18);
+  transform: scale(1.04);
+  background: white;
+}
+
+.category-carousel .swiper-wrapper{
+  height: 40%;
+  padding: 2rem;
+}
+
+.category-carousel .swiper-wrapper a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-carousel .swiper-slide .category-title {
+  color: #1F6C57;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.category-carousel .swiper-slide.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  filter: grayscale(0.7);
+  pointer-events: none;
+  opacity: 0.85;
+  box-shadow: 0 2px 12px rgba(15,24,93,0.04);
+}
+.category-carousel .swiper-slide.coming-soon .category-title {
+  color: gray;
+}
+.category-carousel .swiper-slide.coming-soon img.gray-out {
+  border: 4px solid white;
+  filter: grayscale(100%) brightness(0.95);
+}
+.coming-soon-label {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #223B6F;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 6px 18px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(15,24,93,0.08);
+  letter-spacing: 0.04em;
+  opacity: 0.95;
+  z-index: 2;
+}
+
 .swiper-prev,
 .swiper-next {
   width: 38px;
   height: 38px;
   line-height: 38px;
-  background: #F1F1F1;
+  background: white;
   color: #222222;
   padding: 0;
   text-align: center;
@@ -217,9 +349,9 @@ header .info-usuario{
   --bs-btn-active-border-color: transparent;
   --bs-btn-hover-bg: var(--bs-primary);
   --bs-btn-hover-border-color: transparent;
-  --bs-btn-disabled-color: #ccc;
-  --bs-btn-disabled-bg: #eaeaea;
-  --bs-btn-disabled-border-color: #eaeaea
+  --bs-btn-disabled-color: white;
+  --bs-btn-disabled-bg: white;
+  --bs-btn-disabled-border-color: white;
 }
 .swiper-prev:hover,
 .swiper-next:hover {
@@ -227,8 +359,8 @@ header .info-usuario{
 }
 
 .category-carousel .category-item {
-  background: #FFFFFF;
-  border: 1px solid #FBFBFB;
+  background: white;
+  border: 1px solid white;
   box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   text-align: center;
@@ -251,8 +383,8 @@ header .info-usuario{
 }
 
 .brand-carousel .brand-item {
-  background: #FFFFFF;
-  border: 1px solid #FBFBFB;
+  background: white;
+  border: 1px solid white;
   box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   padding: 16px;

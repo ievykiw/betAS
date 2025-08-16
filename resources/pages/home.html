@@ -180,7 +180,7 @@
     </div>
 
     <header>
-        <div class="container-fluid">
+        <div class="container-fluid " id="navbar">
             <div class="row border-bottom border-2 align-items-center justify-content-between">
                 <div
                     class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
@@ -203,11 +203,11 @@
                                 Jogos
                             </a>
                             <ul class="dropdown-menu border-0 rounded-0 shadow" aria-labelledby="gamesDropdown">
-                                <li><a class="dropdown-item" href="category-dado.html">Jogo dos Dados</a></li>
-                                <li><a class="dropdown-item" href="category-roleta.html">Roleta</a></li>
-                                <li><a class="dropdown-item" href="category-blackjack.html">Blackjack</a></li>
-                                <li><a class="dropdown-item" href="category-poker.html">Poker</a></li>
-                                <li><a class="dropdown-item" href="category-bingo.html">Bingo</a></li>
+                                <li><a class="dropdown-item fw-bold" href="category-dado.html">Jogo dos Dados</a></li>
+                                <li><a class="dropdown-item">Roleta (Em breve)</a></li>
+                                <li><a class="dropdown-item">Blackjack (Em breve)</a></li>
+                                <li><a class="dropdown-item">Poker (Em breve)</a></li>
+                                <li><a class="dropdown-item">Bingo (Em breve)</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -293,7 +293,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-3 g-0 justify-content-center mb-5">
+            <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-3 g-0 justify-content-center mb-0">
                 <div class="col info">
                     <div class="responsabilidade card border-0 rounded-0 p-4 text-light">
                         <div class="row align-items-center justify-content-center">
@@ -354,7 +354,7 @@
     </section>
 
     <section class="py-5 overflow-hidden" id="menu-jogos">
-        <div class="container-lg">
+        <div class="container-lg" id="container-games">
             <div class="row">
                 <div class="col-md-12">
 
@@ -362,17 +362,17 @@
                         <h2 class="section-title">Jogos</h2>
 
                         <div class="d-flex align-items-center">
-                            <a href="#" class="btn btn-primary me-2">View All</a>
+                            <a href="#navbar" class="btn btn-primary me-2">Ver todos</a>
                             <div class="swiper-buttons">
-                                <button class="swiper-prev category-carousel-prev btn btn-yellow">❮</button>
-                                <button class="swiper-next category-carousel-next btn btn-yellow">❯</button>
+                                <button class="swiper-prev category-carousel-prev btn">❮</button>
+                                <button class="swiper-next category-carousel-next btn">❯</button>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="row">
+            <div class="row h-100">
                 <div class="col-md-12">
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">

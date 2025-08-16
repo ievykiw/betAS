@@ -11,16 +11,15 @@ body::after{
 
 }
 
-#ddd{
-    margin-right: 10px;
-    width: 20%;
-}
-
-#telefone{
-    width: 70%;
-}
-
 /*TELA DE USUÁRIO*/
+
+li.nav-item button{
+  color: #0F185D;
+}
+
+li.nav-item button:hover{
+  color: #29AC46;
+}
 
 .container.rounded{
   width: 50%;
@@ -57,7 +56,50 @@ input.form-control,input[type="text"],input[type="email"],input[type="password"]
   box-shadow: none;
 }
 
+#ddd{
+    margin-right: 10px;
+    width: 20%;
+}
 
+#telefone{
+    width: 70%;
+}
+
+.btn.cash, .btn.deposit{
+  background-color: #29AC46;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn.cash:hover, .btn.deposit:hover {
+  background-color: #1F6C57;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(41,172,70,0.12);
+}
+
+.badge.rounded-pill{
+  background-color: #29AC46;
+}
+
+button.btn.profile-button {
+  background-color: #29AC46;
+  color: white;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+button.btn.profile-button:hover {
+  background-color: #1F6C57;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(41, 172, 69, 0.231);
+}
 
 /*VERIFICAR SENHAS*/
 
@@ -88,4 +130,3 @@ input.form-control,input[type="text"],input[type="email"],input[type="password"]
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   margin-bottom: 25px;
 }
-
