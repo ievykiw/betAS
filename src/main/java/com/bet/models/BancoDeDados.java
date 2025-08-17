@@ -24,7 +24,7 @@ public class BancoDeDados {
         clientes.put(cliente.getId(), cliente);
         
         System.out.println("Cliente salvo no banco: " + cliente.getNome() + " " + cliente.getSobrenome() + " com ID: " + cliente.getId() +
-            "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getToken() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo());
+            "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getToken() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo() + "\n " + cliente.getEstadoAtual());
         
         return cliente;
     }

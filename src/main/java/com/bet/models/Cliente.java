@@ -14,6 +14,7 @@ public class Cliente {
     private String email;
     private String senha;
     private String telefone;
+    private TipoContaState estadoAtual;
 
 
     public Cliente() {}
@@ -26,6 +27,7 @@ public class Cliente {
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
+        this.estadoAtual = new EstadoNormal();
     }
 
     public BigInteger getId() {
@@ -90,6 +92,26 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    public double getFatorProbabilidade(){
+        return this.estadoAtual.porcentagemGanho();
+    }
+    
+    public void virarPremium(){
+        estadoAtual = new EstadoPremium();
+    }
+    
+    public void virarContaPadrao(){
+        estadoAtual = new EstadoNormal();
+    }
+
+    public String getEstadoAtual() {
+        return estadoAtual.getEstado();
+    }
+
+    public void setEstadoAtual(TipoContaState estadoAtual) {
+        this.estadoAtual = estadoAtual;
+    }
+    
 }
 
 
