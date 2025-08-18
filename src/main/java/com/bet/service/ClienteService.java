@@ -6,4 +6,6 @@ import com.bet.models.RegistroUser;
 public interface ClienteService {
     
     Cliente registrarCliente(RegistroUser registroUser);
+    Cliente validarLogin(String email, String senha);
+    
 }

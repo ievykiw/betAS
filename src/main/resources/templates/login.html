@@ -167,64 +167,62 @@
                     nome: $('input[name="nome"]', this).val(),
                     sobrenome: $('input[name="sobrenome"]', this).val(),
                     cpf: $('input[name="cpf"]', this).val(),
-                    ddd: $('input[name="ddd"]', this).val(),
                     telefone: $('input[name="telefone"]', this).val(),
                     email: $('input[name="email"]', this).val(),
-                    novaSenha: $('input[name="novaSenha"]', this).val(),
-                    confirmarSenha: $('input[name="confirmarSenha"]', this).val()
+                    senha: $('input[name="novaSenha"]', this).val()
                 };
-                if (data.novaSenha !== data.confirmarSenha) {
-                    alert('As senhas não coincidem.');
-                    return;
-                }
-                console.log('Dados de registro:', data);
+
+                fetch('http://localhost:8080/api/registrar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro no registro: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(clienteRegistrado => {
+                        alert('Bem-vindo, ' + clienteRegistrado.nome + '! Seu registro foi concluído.');
+                        window.location.href = 'home.html';
+
+                    })
+                    .catch(error => {
+                        alert('Não foi possível registrar. Verifique o console para detalhes.');
+                    });
             });
 
             $('#loginForm').on('submit', function (e) {
                 e.preventDefault();
                 var loginData = {
-                    emailLogin: $('#emailLogin').val(),
-                    password: $('#userPassword').val()
+                    email: $('#emailLogin').val(),
+                    senha: $('#userPassword').val()
                 };
-                console.log('Dados de login:', loginData);
+
+                fetch('http://localhost:8080/api/logar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(loginData),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro no login: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(clienteLogado => {
+                        alert('Bem-vindo de volta, ' + clienteLogado.nome + '!');
+                        window.location.href = 'home.html';
+                    })
+                    .catch(error => {
+                        alert('Não foi possível fazer o login. Verifique o console para detalhes.');
+                    });
             });
-        });
-    </script>
-
-    <script>
-
-        $('#registerForm').on('submit', function (e) {
-            e.preventDefault();
-            var data = {
-                nome: $('input[name="nome"]', this).val(),
-                sobrenome: $('input[name="sobrenome"]', this).val(),
-                cpf: $('input[name="cpf"]', this).val(),
-                email: $('input[name="email"]', this).val(),
-                novaSenha: $('input[name="novaSenha"]', this).val(),
-                telefone: $('input[name="telefone"]', this).val()
-            };
-
-            fetch('http://localhost:8080/api/registrar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data), 
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('A Cozinha retornou um erro: ' + response.status);
-                    }
-                    return response.json(); 
-                })
-                .then(clienteRegistrado => {
-                    console.log('Pedido atendido com sucesso:', clienteRegistrado);
-                    alert('Bem-vindo, ' + clienteRegistrado.nome + '! Seu registro foi concluído.');
-                })
-                .catch(error => {
-                    console.error('Falha na comunicação:', error);
-                    alert('Não foi possível completar o registro. Verifique o console (F12) para detalhes.');
-                });
         });
     </script>
 

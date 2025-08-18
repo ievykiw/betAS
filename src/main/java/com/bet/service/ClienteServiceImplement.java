@@ -24,4 +24,9 @@ public class ClienteServiceImplement implements ClienteService {
         return bancoDeDados.adicionarCliente(novoCliente);
 
     }
+
+    @Override
+    public Cliente validarLogin(String email, String senha) {
+        return bancoDeDados.validarLogin(email, senha);
+    }
 }

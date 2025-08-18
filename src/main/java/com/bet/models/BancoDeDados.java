@@ -32,4 +32,15 @@ public class BancoDeDados {
     public Cliente buscarPorId(BigInteger id) {
         return clientes.get(id);
     }
+
+    public Cliente validarLogin(String email, String senha) {
+        for (Cliente cliente : clientes.values()) {
+            if (cliente.getEmail() != null && cliente.getSenha() != null) {
+                if (cliente.getEmail().equals(email) && cliente.getSenha().equals(senha)) {
+                    return cliente;
+                }
+            }
+        }
+        return null;
+    }
 }

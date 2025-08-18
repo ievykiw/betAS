@@ -1,4 +1,3 @@
-// Local: src/main/java/com/bet/controllers/LoginController.java
 package com.bet.controllers;
 
 import org.springframework.http.ResponseEntity;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bet.models.Cliente;
+import com.bet.models.LoginUser;
 import com.bet.models.RegistroUser;
 import com.bet.service.ClienteService;
 
@@ -24,6 +24,12 @@ public class LoginController {
         this.clienteService = clienteService;
     }
 
+    @PostMapping("/logar")
+    
+    public Cliente logar (@RequestBody LoginUser loginUser) {
+        return clienteService.validarLogin(loginUser.getEmail(), loginUser.getSenha());
+    }
+    
     @PostMapping("/registrar")
 
     public ResponseEntity<Cliente> registrar(@RequestBody RegistroUser registroUser) {
