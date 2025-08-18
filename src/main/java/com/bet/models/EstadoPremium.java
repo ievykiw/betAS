@@ -1,5 +1,5 @@
 package com.bet.models;
-
+//Estado Premium da conta do Cliente
 public class EstadoPremium implements TipoContaState {
     private String estado = "PREMIUM";
     @Override

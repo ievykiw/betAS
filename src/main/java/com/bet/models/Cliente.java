@@ -14,11 +14,11 @@ public class Cliente {
     private String email;
     private String senha;
     private String telefone;
-    private TipoContaState estadoAtual;
+    private TipoContaState estadoAtual; // criacao da classe de estado atrelado ao State
 
 
     public Cliente() {}
-
+    //Construtor
     public Cliente(String nome, String sobrenome, String cpf,
         String email, String senha, String telefone) {
         this.nome = nome;
@@ -29,7 +29,7 @@ public class Cliente {
         this.telefone = telefone;
         this.estadoAtual = new EstadoNormal();
     }
-
+    //metodos de Acesso da Classe CLiente
     public BigInteger getId() {
         return id;
     }
@@ -95,7 +95,7 @@ public class Cliente {
     public double getFatorProbabilidade(){
         return this.estadoAtual.porcentagemGanho();
     }
-    
+    // Mudança de Estado da conta com base na troca do tipo de conta(Padrao ou Premium)
     public void virarPremium(){
         estadoAtual = new EstadoPremium();
     }
@@ -107,11 +107,6 @@ public class Cliente {
     public String getEstadoAtual() {
         return estadoAtual.getEstado();
     }
-
-    public void setEstadoAtual(TipoContaState estadoAtual) {
-        this.estadoAtual = estadoAtual;
-    }
-    
 }
 
 
