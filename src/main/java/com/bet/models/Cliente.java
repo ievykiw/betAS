@@ -33,6 +33,7 @@ public class Cliente {
     public BigInteger getId() {
         return id;
     }
+
     public void setId(BigInteger id) {
         this.id = id;
     }
@@ -40,6 +41,7 @@ public class Cliente {
     public BigDecimal getSaldo() {
         return saldo;
     }
+
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
@@ -47,6 +49,7 @@ public class Cliente {
     public BigInteger getToken() {
         return token;
     }
+
     public void setToken(BigInteger token) {
         this.token = token;
     }
@@ -54,6 +57,7 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -61,6 +65,7 @@ public class Cliente {
     public String getSobrenome() {
         return sobrenome;
     }
+
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
@@ -68,6 +73,7 @@ public class Cliente {
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -75,6 +81,7 @@ public class Cliente {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -82,6 +89,7 @@ public class Cliente {
     public String getSenha() {
         return senha;
     }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -89,9 +97,11 @@ public class Cliente {
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public double getFatorProbabilidade(){
         return this.estadoAtual.porcentagemGanho();
     }
@@ -107,9 +117,11 @@ public class Cliente {
     public String getEstadoAtual() {
         return estadoAtual.getEstado();
     }
+
     public void perderAposta(BigDecimal valorPerdido){
         this.saldo = this.saldo.subtract(valorPerdido);
     }
+    
     public void ganharAposta(BigDecimal valorGanho){
         this.saldo = this.saldo.add(valorGanho);
     }

@@ -4,7 +4,7 @@ public class EstadoNormal implements TipoContaState{
     private String estado = "BASICO";
     @Override
     public double porcentagemGanho() {
-        return 0.25;
+        return 0.30;
     }
     public String getEstado(){
         return estado;

@@ -11,44 +11,51 @@
         private int dadoAzul1;
         private int dadoAzul2;
         private int dadoEscolhido;
-        private boolean vitoria;
+        private boolean vitoriaDefinida;
         private Cliente cliente;
         private String mensagem;
         private double odd;
         private double valorApostado;
 
-        //calcula se na rodada o Cliente vai ter uma chance justa ou menor aleatoriamente;
-    public void chanceVitoria(Cliente cliente){
-            if(random.nextDouble()<cliente.getFatorProbabilidade()){
-                vitoria = true;
-            }else{
-                vitoria = false;
-            }
-    }
-    //faz a rolagem de dados armazenando o resultado total deles e enviando de volta para o metodo jogarJogo;
-    public void rolagemDeDados(int maxAzul,int maxVerde){
-            dadoAzul1 = random.nextInt(maxAzul)+1;
-            dadoAzul2 = random.nextInt(maxAzul)+1;
-            azulTotal = dadoAzul1 + dadoAzul2;
-            dadoVerde1 = random.nextInt(maxVerde)+1;
-            dadoVerde2 = random.nextInt(maxVerde)+1;
-            verdeTotal = dadoVerde1 + dadoVerde2;          
-    }
-    /*Faz a rodada usando a chance de ganho calculada de acordo com o tipo de dado que o 
-    jogador escolher, enviando direto para o metodo de resultado para validacao de status da aposta*/
+        //faz a rolagem de dados armazenando o resultado total deles e enviando de volta para o metodo jogarJogo;
+        public void rolagemDeDados(){
+                this.dadoAzul1 = random.nextInt(6)+1;
+                this.dadoAzul2 = random.nextInt(6)+1;
+                this.azulTotal = dadoAzul1 + dadoAzul2;
+                this.dadoVerde1 = random.nextInt(6)+1;
+                this.dadoVerde2 = random.nextInt(6)+1;
+                this.verdeTotal = dadoVerde1 + dadoVerde2;
+        }
+        /*Faz a rodada usando a chance de ganho calculada de acordo com o tipo de dado que o 
+        jogador escolher, enviando direto para o metodo de resultado para validacao de status da aposta*/
         public ResultadoDoJogo jogarJogo(Cliente cliente, double odd, double valorApostado, int dadoEscolhido){
             this.dadoEscolhido = dadoEscolhido;
-            this.chanceVitoria(this.cliente = cliente);
             this.odd = odd;
             this.valorApostado = valorApostado;
-            if(vitoria){
+            double metaDeVitoria = cliente.getFatorProbabilidade();
+
+            this.vitoriaDefinida = random.nextDouble() < metaDeVitoria;
+
+            if(vitoriaDefinida){
                 if(dadoEscolhido == 0){
-                    rolagemDeDados(3, 6);        
+                    do{
+                        rolagemDeDados();  
+                    }while(verdeTotal>=azulTotal);
                 }else{
-                    rolagemDeDados(6, 3);
+                    do{
+                        rolagemDeDados();
+                    }while(azulTotal>=verdeTotal);
                 }
             }else{
-                rolagemDeDados(6, 6);
+                if(dadoEscolhido == 0){
+                    do{
+                        rolagemDeDados();
+                    }while(azulTotal > verdeTotal);
+                }else{
+                    do{
+                        rolagemDeDados();
+                    }while(verdeTotal > azulTotal);
+                }
             }
             return this.resultado(azulTotal,verdeTotal);
         }
