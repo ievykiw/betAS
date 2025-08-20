@@ -107,6 +107,12 @@ public class Cliente {
     public String getEstadoAtual() {
         return estadoAtual.getEstado();
     }
+    public void perderAposta(BigDecimal valorPerdido){
+        this.saldo = this.saldo.subtract(valorPerdido);
+    }
+    public void ganharAposta(BigDecimal valorGanho){
+        this.saldo = this.saldo.add(valorGanho);
+    }
 }
 
 
