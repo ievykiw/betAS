@@ -6,21 +6,19 @@ import javax.servlet.http.HttpSession; //Importa a classe HttpSession para manip
 
 import org.springframework.stereotype.Controller; //Importa as anotações do Spring MVC para definição da classe controladora, mapeamento de rotas e manipulação de requisições
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bet.models.Cliente; //Importa a classe Cliente que representa o usuário do sistema
-import com.bet.models.LoginUser; //Importa a classe LoginUser para verificação  dos dados de login do usuário
-import com.bet.models.RegistroUser; //Importa a classe RegistroUser para verificação dos dados de registro de novos usuários
-import com.bet.service.ClienteService; //Importa a classe ClienteService que contém os métodos de excução relacionados ao Cliente, como validação de login por exemplo
+import com.bet.models.Cliente;
+import com.bet.models.LoginUser; //Importa a classe Cliente que representa o usuário do sistema
+import com.bet.models.RegistroUser; //Importa a classe LoginUser para verificação  dos dados de login do usuário
+import com.bet.service.ClienteService; //Importa a classe RegistroUser para verificação dos dados de registro de novos usuários
 
 @Controller //Anotação Spring MVC para indicar que esta classe é um controlador e que irá lidar com requisições HTTP
 @RequestMapping("/api") //Anotação para definir o caminho base para as rotas do controlador LoginController 
-@CrossOrigin(origins = "http://127.0.0.1:5500") //Ãnotação apenas para permitir requisições da porta 5500 do live server
 public class LoginController {
 
     private final ClienteService clienteService; //Criando um atributo constante do tipo ClienteService para acessar os méetodos de serviço relacionados ao Cliente
@@ -70,13 +68,13 @@ public class LoginController {
             return "home"; //Retorna o nome da view será carregado pela ferramenta de templates, nesse caso, o Thymeleaf
         } else {
             //Se o ID do cliente for nulo, redireciona para a página de login
-            return "redirect:/api/login"; 
+            return "redirect:/api/menu"; 
         }
     }
     
-    @GetMapping("/login") // Anotação para mapear requisições do tipo GET e definição do caminho /login para o método showLoginPage
+    @GetMapping("/menu") // Anotação para mapear requisições do tipo GET e definição do caminho /login para o método showLoginPage
     public String showLoginPage() { // Método para exibir a página de login 
-        return "login"; // Isso renderiza o arquivo /resources/templates/login.html
+        return "menu"; // Isso renderiza o arquivo /resources/templates/login.html
     }
     
 }

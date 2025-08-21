@@ -13,6 +13,7 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
     private String cpf; //Atributo cpf do cliente
     private String email; //Atributo email do cliente
     private String senha; //Atributo senha do cliente
+    private String ddd; //Atributo ddd do cliente, utilizado para validação de telefone
     private String telefone; //Atributo telefone do cliente
     private TipoContaState estadoAtual; // Atributo da classe de estado atrelado ao State
 
@@ -20,12 +21,13 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
     public Cliente() {}
     //Construtor
     public Cliente(String nome, String sobrenome, String cpf,
-        String email, String senha, String telefone) {
+        String email, String senha,String ddd, String telefone) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
+        this.ddd = ddd;
         this.telefone = telefone;
         this.estadoAtual = new EstadoNormal();
     }
@@ -102,9 +104,18 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
         this.telefone = telefone;
     }
 
+    public String getDdd() {
+        return ddd;
+    }
+    
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
+    }
+    
     public double getFatorProbabilidade(){
         return this.estadoAtual.porcentagemGanho();
     }
+    
     public void virarPremium(){
         estadoAtual = new EstadoPremium();
     }

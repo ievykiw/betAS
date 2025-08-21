@@ -11,3 +11,4 @@ com/bet/BetasApp.class
 com/bet/models/ResultadoDoJogo.class
 com/bet/models/JogoDeDado.class
 com/bet/models/EstadoPremium.class
+com/bet/controllers/InfoClienteController.class
