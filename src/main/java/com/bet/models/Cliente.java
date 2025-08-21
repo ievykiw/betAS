@@ -1,20 +1,20 @@
 package com.bet.models;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import java.math.BigDecimal; //Importa a classe BigDecimal para manipulação de números decimais, nesse caso o Saldo do Cliente
+import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID e o Token)
 
-public class Cliente {
-    private BigInteger id;
-    private BigDecimal saldo;
-    private BigInteger token;
+public class Cliente { //Definição da classe Cliente com todos os atributos e métodos necessários para manipulação dos dados do cliente
+    private BigInteger id; //Atributo id do cliente
+    private BigDecimal saldo; //Atributo saldo do cliente
+    private BigInteger token; //Atributo token do cliente, utilizado para validação de transações
 
-    private String nome;
-    private String sobrenome;
-    private String cpf;
-    private String email;
-    private String senha;
-    private String telefone;
-    private TipoContaState estadoAtual; // criacao da classe de estado atrelado ao State
+    private String nome; //Atributo nome do cliente
+    private String sobrenome; //Atributo sobrenome do cliente
+    private String cpf; //Atributo cpf do cliente
+    private String email; //Atributo email do cliente
+    private String senha; //Atributo senha do cliente
+    private String telefone; //Atributo telefone do cliente
+    private TipoContaState estadoAtual; // Atributo da classe de estado atrelado ao State
 
 
     public Cliente() {}
@@ -29,7 +29,7 @@ public class Cliente {
         this.telefone = telefone;
         this.estadoAtual = new EstadoNormal();
     }
-    //metodos de Acesso da Classe CLiente
+    //Metodos de acesso aos atributos da Classe CLiente (getters e setters)
     public BigInteger getId() {
         return id;
     }
@@ -105,7 +105,6 @@ public class Cliente {
     public double getFatorProbabilidade(){
         return this.estadoAtual.porcentagemGanho();
     }
-    // Mudança de Estado da conta com base na troca do tipo de conta(Padrao ou Premium)
     public void virarPremium(){
         estadoAtual = new EstadoPremium();
     }

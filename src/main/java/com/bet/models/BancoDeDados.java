@@ -1,27 +1,28 @@
-// Em BancoDeDados.java (seu repositório em memória)
 package com.bet.models;
 
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID e o Token)
+import java.util.HashMap; //Importa a classe HashMap para armazenamento de dados do usuário em tempo de execução, com correlação de ID e o objeto do tipo Cliente
+import java.util.Map; //Importa a interface Map de dados no formato chave-valor, nesse caso o HashMap
+import java.util.Random; //Importa a classe Random para gerar um número aletório, nesse caso, o Token do Cliente
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository; //IMporta a anotação de repositório do Spring
 
-@Repository
+@Repository //Anotação do Spring para informar que esta classe é uma classe que irá interagir com o banco de dados
+
+//Definição da classe BancoDeDados para armazenamento e manipulação dos dados do sistema
 public class BancoDeDados {
 
-    private final Map<BigInteger, Cliente> clientes = new HashMap<>();
-    private BigInteger proximoId = BigInteger.ONE;
+    private final Map<BigInteger, Cliente> clientes = new HashMap<>(); //Instancia um HashMap que armazena dados do tipo Cliente, com a chave sendo o ID do Cliente
+    private BigInteger proximoId = BigInteger.ONE; //Inicialização do ID dos clientes, começando com o valor 1 do tipo BigInteger
 
-    public Cliente adicionarCliente(Cliente cliente) {
-        cliente.setId(proximoId);
-        proximoId = proximoId.add(BigInteger.ONE);
+    public Cliente adicionarCliente(Cliente cliente) { //Criação do método para adicionar um cliente ao banco de dados
+        cliente.setId(proximoId); //Atribui o valor do ID ao atributo id do cliente
+        proximoId = proximoId.add(BigInteger.ONE); //Incrementa o atributo proximoId para o pŕoximo cliente que for adicionado ao banco
 
-        BigInteger tokenAleatorio = new BigInteger(50, new Random());
-        cliente.setToken(tokenAleatorio);
+        BigInteger tokenAleatorio = new BigInteger(50, new Random()); //Gera um toke aleatório
+        cliente.setToken(tokenAleatorio); //Atribui o token gerado ao atributo token do cliente
 
-        clientes.put(cliente.getId(), cliente);
+        clientes.put(cliente.getId(), cliente); //Utiliza o método put do HashMap para adicionar o cliente ao banco de dados com a chave sendo o id do proprio cliente
         
         System.out.println("Cliente salvo no banco: " + cliente.getNome() + " " + cliente.getSobrenome() + " com ID: " + cliente.getId() +
             "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getToken() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo() + "\n " + cliente.getEstadoAtual());
@@ -29,14 +30,14 @@ public class BancoDeDados {
         return cliente;
     }
 
-    public Cliente buscarPorId(BigInteger id) {
+    public Cliente buscarPorId(BigInteger id) { //Método para buscar um cliente no banco através do id
         return clientes.get(id);
     }
 
-    public Cliente validarLogin(String email, String senha) {
-        for (Cliente cliente : clientes.values()) {
-            if (cliente.getEmail() != null && cliente.getSenha() != null) {
-                if (cliente.getEmail().equals(email) && cliente.getSenha().equals(senha)) {
+    public Cliente validarLogin(String email, String senha) { //Método para validar o login do cliente através do email e senha
+        for (Cliente cliente : clientes.values()) { //Para todos os dados do tipo Cliente, itera sobre cada um dos valores do mesmo tipo armazenados no banco de dados
+            if (cliente.getEmail() != null && cliente.getSenha() != null) { //Verifica se o cliente da posição atual possui email e senha
+                if (cliente.getEmail().equals(email) && cliente.getSenha().equals(senha)) { //Se o email e senha desse cliente existir no banco de dados retorna o cliente
                     return cliente;
                 }
             }

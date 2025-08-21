@@ -17,7 +17,7 @@
         private double odd;
         private double valorApostado;
 
-        //faz a rolagem de dados armazenando o resultado total deles e enviando de volta para o metodo jogarJogo;
+        //Faz a rolagem de dados armazenando o resultado total deles e enviando de volta para o metodo jogarJogo;
         public void rolagemDeDados(){
                 this.dadoAzul1 = random.nextInt(6)+1;
                 this.dadoAzul2 = random.nextInt(6)+1;

@@ -1,5 +1,6 @@
 package com.bet.models;
 
+//Definição da classe RegistroUser que gerencia os dados de registro do usuário
 public class RegistroUser {
     private String nome;
     private String sobrenome;

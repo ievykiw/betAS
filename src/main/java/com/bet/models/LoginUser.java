@@ -1,5 +1,6 @@
 package com.bet.models;
 
+//Definiçã da classe LoginUser que gerencia os dados de login do usuário
 public class LoginUser {
     private String email;
     private String senha;

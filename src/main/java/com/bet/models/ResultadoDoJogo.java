@@ -1,7 +1,7 @@
 package com.bet.models;
 
 import java.math.BigDecimal;
-//classe feita apenas para retornar o Json com todas as informaçoes
+//Classe feita apenas para retornar o JSON com todas as informaçoes
 public class ResultadoDoJogo {
     private final String mensagem;
     private final int dadoAzul1, dadoAzul2;
