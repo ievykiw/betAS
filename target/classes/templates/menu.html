@@ -14,8 +14,8 @@
 
 <body>
     <section class="gradient-form" style="background-color: #eee;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-xl-10">
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
@@ -67,22 +67,32 @@
                                             aria-labelledby="register-tab">
                                             <form id="registerForm" class="p-2">
                                                 <p>Crie uma Nova conta</p>
-                                                <div class="mb-2"><label class="form-label">Nome</label><input
-                                                        type="text" class="form-control" name="nome" required></div>
-                                                <div class="mb-2"><label class="form-label">Sobrenome</label><input
-                                                        type="text" class="form-control" name="sobrenome" required>
+                                                <div class="mb-2">
+                                                    <label class="form-label">Nome</label>
+                                                    <input type="text" class="form-control" name="nome" required>
                                                 </div>
-                                                <div class="mb-2"><label class="form-label">CPF</label><input
-                                                        type="text" class="form-control" name="cpf" id="cpfReg"
-                                                        required></div>
-                                                <div class="mb-2"><label class="form-label">DDD</label><input
-                                                        type="text" class="form-control" name="ddd" id="dddReg"
-                                                        maxlength="2" required></div>
-                                                <div class="mb-2"><label class="form-label">Telefone</label><input
-                                                        type="text" class="form-control" name="telefone"
-                                                        id="telefoneReg" required></div>
-                                                <div class="mb-2"><label class="form-label">Email</label><input
-                                                        type="email" class="form-control" name="email" required></div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">Sobrenome</label>
+                                                    <input type="text" class="form-control" name="sobrenome" required>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">CPF</label>
+                                                    <input type="text" class="form-control" name="cpf" id="cpfReg" required>
+                                                </div>
+                                                <div class="mb-2 row">
+                                                    <div class="col-4">
+                                                        <label class="form-label">DDD</label>
+                                                        <input type="text" class="form-control" name="ddd" id="dddReg" maxlength="2" required>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <label class="form-label">Telefone</label>
+                                                        <input type="text" class="form-control" name="telefone" id="telefoneReg" required>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">Email</label>
+                                                    <input type="email" class="form-control" name="email" required>
+                                                </div>
                                                 <div class="mb-2 position-relative">
                                                     <label class="form-label">Nova Senha</label>
                                                     <input type="password" class="form-control" name="novaSenha"
@@ -166,6 +176,7 @@
                     nome: $('input[name="nome"]', this).val(),
                     sobrenome: $('input[name="sobrenome"]', this).val(),
                     cpf: $('input[name="cpf"]', this).val(),
+                    ddd: $('input[name="ddd"]', this).val(),
                     telefone: $('input[name="telefone"]', this).val(),
                     email: $('input[name="email"]', this).val(),
                     senha: $('input[name="novaSenha"]', this).val()

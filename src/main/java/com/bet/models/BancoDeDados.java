@@ -25,7 +25,7 @@ public class BancoDeDados {
         clientes.put(cliente.getId(), cliente); //Utiliza o método put do HashMap para adicionar o cliente ao banco de dados com a chave sendo o id do proprio cliente
         
         System.out.println("Cliente salvo no banco: " + cliente.getNome() + " " + cliente.getSobrenome() + " com ID: " + cliente.getId() +
-            "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getToken() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo() + "\n " + cliente.getEstadoAtual());
+            "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getToken() + "\n " + cliente.getDdd() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo() + "\n " + cliente.getEstadoAtual());
         
         return cliente;
     }

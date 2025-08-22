@@ -8,9 +8,11 @@ public class RegistroUser {
     private String email;
     private String senha;
     private String telefone;
+    private String ddd;
     
     
-    
+
+
     public String getNome() {
         return nome;
     }
@@ -52,7 +54,13 @@ public class RegistroUser {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
+
+    public String getDdd() {
+        return ddd;
+    }
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
+    }
 }
 
 
