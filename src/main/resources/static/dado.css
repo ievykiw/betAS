@@ -24,7 +24,7 @@ body {
 /*ESTILO DOS DADOS*/
 
 .container {
-  height: 80%;
+  height: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -263,18 +263,107 @@ button:active {
   background-blend-mode: multiply;
 }
 
-.controls button{
+.controls {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls .btn-group .btn.grupoazul {
+  background-color: #0f185d75;
   color: white;
+}
+
+.controls .btn-group .btn.grupoverde {
+  background-color: #29ac4675;
+  color: white;
+}
+
+.controls .btn-group .btn-check:checked + .grupoazul {
   background-color: #0F185D;
-  border: 2px solid rgba(0, 81, 255, 0.279);
-  transition: all 0.3s ease;
-}
-
-.controls button:hover {
-  transform: scale(1.05);
-  background-color: #29ac46;
-  border: 2px solid rgba(41, 172, 69, 0.2);
   color: white;
-  box-shadow: 0 4px 20px rgba(0, 81, 255, 0.2);
 }
 
+.controls .btn-group .btn-check:checked + .grupoverde {
+  background-color: #29ac46;
+  color: white;
+}
+
+/* ...existing code... */
+
+.investimento-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.investimento-col,
+.odd-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 220px;
+}
+
+.investimento-col label,
+.odd-col label {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.input-group-text {
+  background: #ffffff2f !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.form-control.bg-dark,
+.form-select.bg-dark {
+  background: #ffffff2f !important;
+  color: #fff !important;
+  border: none !important;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.form-control.bg-dark::placeholder {
+  color: #bfc7e0 !important;
+  opacity: 1;
+}
+
+.form-select.bg-dark:focus,
+.form-control.bg-dark:focus {
+  background: #16226ea2 !important;
+  color: #fff !important;
+  border: 2px solid #29ac46 !important;
+  box-shadow: none;
+}
+
+.roll.btn {
+  background-color: #00c12a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(15, 24, 93, 0.15);
+  letter-spacing: 1px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transform: scale(1.25);
+  padding: 16px 48px;
+}
+
+.roll.btn:hover, .roll.btn:focus {
+  background-color: #27cd4b;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(41, 172, 70, 0.25);
+  transform: scale(1.35);
+}
