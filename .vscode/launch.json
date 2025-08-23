@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BetasApp<betAS>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.bet.BetasApp",
+            "projectName": "betAS",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
