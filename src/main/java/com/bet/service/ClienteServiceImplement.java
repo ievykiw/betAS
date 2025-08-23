@@ -21,7 +21,7 @@ public class ClienteServiceImplement implements ClienteService { //Definição d
     @Override //Anotação da interface para que o método abaixo seja uma implementação do método definido na interface
     public Cliente registrarCliente(RegistroUser registroUser) { //Implementação do método de registro de um novo cliente no sistema
         Cliente novoCliente = new Cliente(registroUser.getNome(), registroUser.getSobrenome(), registroUser.getCpf(), registroUser.getEmail(), registroUser.getSenha(), registroUser.getDdd(), registroUser.getTelefone()); //Instanciamento de um novo objeto do tipo Cliente com os dados do objeto construido pelo RegistroUser
-        novoCliente.setSaldo(BigDecimal.ZERO); //Define o saldo inicial do novo cliente como 0 utilizando o BigDecimal
+        novoCliente.setSaldo(BigDecimal.valueOf(100.0)); //Define o saldo inicial do novo cliente como 100 utilizando o BigDecimal
         return bancoDeDados.adicionarCliente(novoCliente); //Chama o método adicionarCliente da classe BancoDeDados para adicionar o novo cliente ao banco e retorna o objeto Cliente adicionado
 
     }

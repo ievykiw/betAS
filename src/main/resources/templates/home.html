@@ -125,7 +125,7 @@
                                 Jogos
                             </a>
                             <ul class="dropdown-menu border-0 rounded-0 shadow" aria-labelledby="gamesDropdown">
-                                <li><a class="dropdown-item fw-bold" href="category-dado.html">Jogo dos Dados</a></li>
+                                <li><a class="dropdown-item fw-bold" href="/games/dice">Jogo dos Dados</a></li>
                                 <li><a class="dropdown-item">Roleta (Em breve)</a></li>
                                 <li><a class="dropdown-item">Blackjack (Em breve)</a></li>
                                 <li><a class="dropdown-item">Poker (Em breve)</a></li>
@@ -297,7 +297,7 @@
                 <div class="col-md-12">
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">
-                            <a href="category-dado.html" class="nav-link swiper-slide text-center">
+                            <a href="/games/dice" class="nav-link swiper-slide text-center">
                                 <img src="/assets/dados-jogos.jpg" class="rounded-circle"
                                     alt="Dados Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Jogo dos Dados</h4>
@@ -355,62 +355,6 @@
                     768: { slidesPerView: 2 },
                     992: { slidesPerView: 4 }
                 }
-            });
-        });
-    </script>
-
-    <!-- MODAL DEPÓSITO E SAQUE -->
-    <script>
-        $(document).ready(function () {
-            var depositModal = new bootstrap.Modal(document.getElementById('tokenModal'));
-            var withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'));
-
-            $('#depositBtn').on('click', function (e) {
-                e.preventDefault();
-                var depositValue = $('#valorDeposito').val();
-                if (depositValue === "" || isNaN(depositValue) || parseFloat(depositValue) < 30) {
-                    alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
-                    return;
-                }
-                $('#modalDepositValue').text('R$ ' + parseFloat(depositValue).toFixed(2));
-                $('#depositTokenInput').val("");
-                depositModal.show();
-            });
-
-            $('#confirmDepositBtn').on('click', function () {
-                var token = $('#depositTokenInput').val();
-                var depositValue = $('#valorDeposito').val();
-                if (token.trim() === "") {
-                    alert("Por favor, insira o código do token.");
-                    return;
-                }
-
-                console.log('Depósito de R$ ' + parseFloat(depositValue).toFixed(2) + ' confirmado com token: ' + token);
-                depositModal.hide();
-            });
-
-            $('#withdrawBtn').on('click', function (e) {
-                e.preventDefault();
-                var withdrawValue = $('#valorSaque').val();
-                if (withdrawValue === "" || isNaN(withdrawValue) || parseFloat(withdrawValue) <= 0) {
-                    alert("O valor do saque não pode ser vazio ou zero.");
-                    return;
-                }
-                $('#modalWithdrawValue').text('R$ ' + parseFloat(withdrawValue).toFixed(2));
-                $('#withdrawTokenInput').val("");
-                withdrawModal.show();
-            });
-
-            $('#confirmWithdrawBtn').on('click', function () {
-                var token = $('#withdrawTokenInput').val();
-                var withdrawValue = $('#valorSaque').val();
-                if (token.trim() === "") {
-                    alert("Por favor, insira o código do token.");
-                    return;
-                }
-
-                console.log('Saque de R$ ' + parseFloat(withdrawValue).toFixed(2) + ' confirmado com token: ' + token);
-                withdrawModal.hide();
             });
         });
     </script>

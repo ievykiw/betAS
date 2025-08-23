@@ -29,6 +29,7 @@
         /*Faz a rodada usando a chance de ganho calculada de acordo com o tipo de dado que o 
         jogador escolher, enviando direto para o metodo de resultado para validacao de status da aposta*/
         public ResultadoDoJogo jogarJogo(Cliente cliente, double odd, double valorApostado, int dadoEscolhido){
+            this.cliente = cliente;
             this.dadoEscolhido = dadoEscolhido;
             this.odd = odd;
             this.valorApostado = valorApostado;
