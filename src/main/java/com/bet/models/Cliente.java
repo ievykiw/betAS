@@ -1,7 +1,7 @@
 package com.bet.models;
 
 import java.math.BigDecimal; //Importa a classe BigDecimal para manipulação de números decimais, nesse caso o Saldo do Cliente
-import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID e o Token)
+import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID)
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +9,6 @@ import java.util.List;
 public class Cliente { //Definição da classe Cliente com todos os atributos e métodos necessários para manipulação dos dados do cliente
     private BigInteger id; //Atributo id do cliente
     private BigDecimal saldo; //Atributo saldo do cliente
-    private BigInteger token; //Atributo token do cliente, utilizado para validação de transações
 
     private String nome; //Atributo nome do cliente
     private String sobrenome; //Atributo sobrenome do cliente
@@ -51,14 +50,6 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
 
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
-    }
-
-    public BigInteger getToken() {
-        return token;
-    }
-
-    public void setToken(BigInteger token) {
-        this.token = token;
     }
 
     public String getNome() {

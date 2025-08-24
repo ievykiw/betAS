@@ -64,13 +64,16 @@
                                 </div>
                                 <div class="col-md-5">
                                     <label class="labels mt-2" for="ddd">DDD</label>
-                                    <input type="text" class="form-control mb-2" id="ddd" name="ddd" maxlength="2" th:value="${cliente.ddd}" />
+                                    <input type="text" class="form-control mb-2" id="ddd" name="ddd" maxlength="2"
+                                        th:value="${cliente.ddd}" />
 
                                     <label class="labels mt-2" for="telefone">Telefone</label>
-                                    <input type="text" class="form-control" id="telefone" name="telefone" th:value="${cliente.telefone}" />
+                                    <input type="text" class="form-control" id="telefone" name="telefone"
+                                        th:value="${cliente.telefone}" />
                                 </div>
                                 <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="email"
-                                        class="form-control" name="email" placeholder="user@email.com" th:value="${cliente.email}"></div>
+                                        class="form-control" name="email" placeholder="user@email.com"
+                                        th:value="${cliente.email}"></div>
 
                                 <div class="col-md-12 mt-2"><label class="labels">Senha Atual</label><input
                                         type="password" class="form-control" id="senhaAtual" name="senhaAtual" value="">
@@ -140,10 +143,19 @@
                                                 <p>Valor do depósito: <span id="modalDepositValue"
                                                         class="fw-bold text-success"></span></p>
                                                 <div class="mb-3">
-                                                    <label for="depositTokenInput" class="form-label">Insira o código do
-                                                        token</label>
-                                                    <input type="text" class="form-control" id="depositTokenInput"
-                                                        placeholder="Token de confirmação">
+                                                    <label for="depositCpfInput" class="form-label">CPF</label>
+                                                    <input type="text" class="form-control" id="cpfDeposit"
+                                                        placeholder="000.000.000-00">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="depositEmailInput" class="form-label">Email</label>
+                                                    <input type="email" class="form-control" id="emailDeposit"
+                                                        placeholder="user@email.com">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="depositSenhaInput" class="form-label">Senha</label>
+                                                    <input type="password" class="form-control" id="senhaDeposit"
+                                                        placeholder="Senha">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -178,13 +190,22 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Valor do saque: <span id="modalWithdrawValue"
-                                                        class="fw-bold text-primary"></span></p>
+                                                <p>Valor do depósito: <span id="modalDepositValue"
+                                                        class="fw-bold text-success"></span></p>
                                                 <div class="mb-3">
-                                                    <label for="withdrawTokenInput" class="form-label">Insira o código
-                                                        do token</label>
-                                                    <input type="text" class="form-control" id="withdrawTokenInput"
-                                                        placeholder="Token de confirmação">
+                                                    <label for="depositCpfInput" class="form-label">CPF</label>
+                                                    <input type="text" class="form-control" id="cpfWithdraw"
+                                                        placeholder="000.000.000-00">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="depositEmailInput" class="form-label">Email</label>
+                                                    <input type="email" class="form-control" id="emailWithdraw"
+                                                        placeholder="user@email.com">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="depositSenhaInput" class="form-label">Senha</label>
+                                                    <input type="password" class="form-control" id="senhaWithdraw"
+                                                        placeholder="Senha">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -305,17 +326,40 @@
 
     <script>
         $(document).ready(function () {
+            // Máscaras para informações pessoais
             $('#ddd').mask('00');
             $('#telefone').mask('9 0000-0000');
-
             $('#cpf').mask('000.000.000-00', {
                 reverse: true,
                 translation: {
                     '0': { pattern: /[0-9]/, optional: true }
                 }
             });
-
             $('#cpf').on('blur', function () {
+                var cpf = $(this).val().replace(/\D/g, '');
+                $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
+            });
+
+            // Máscaras para modal de depósito
+            $('#cpfDeposit').mask('000.000.000-00', {
+                reverse: true,
+                translation: {
+                    '0': { pattern: /[0-9]/, optional: true }
+                }
+            });
+            $('#cpfDeposit').on('blur', function () {
+                var cpf = $(this).val().replace(/\D/g, '');
+                $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
+            });
+
+            // Máscaras para modal de saque
+            $('#cpfWithdraw').mask('000.000.000-00', {
+                reverse: true,
+                translation: {
+                    '0': { pattern: /[0-9]/, optional: true }
+                }
+            });
+            $('#cpfWithdraw').on('blur', function () {
                 var cpf = $(this).val().replace(/\D/g, '');
                 $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
             });

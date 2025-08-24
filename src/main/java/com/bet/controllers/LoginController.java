@@ -1,6 +1,6 @@
 package com.bet.controllers;
 
-import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID e o Token)
+import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID)
 
 import javax.servlet.http.HttpSession; //Importa a classe HttpSession para manipular a sessão HTTP do usuário
 

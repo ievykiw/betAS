@@ -1,9 +1,8 @@
 package com.bet.models;
 
-import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID e o Token)
+import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID)
 import java.util.HashMap; //Importa a classe HashMap para armazenamento de dados do usuário em tempo de execução, com correlação de ID e o objeto do tipo Cliente
 import java.util.Map; //Importa a interface Map de dados no formato chave-valor, nesse caso o HashMap
-import java.util.Random; //Importa a classe Random para gerar um número aletório, nesse caso, o Token do Cliente
 
 import org.springframework.stereotype.Repository; //IMporta a anotação de repositório do Spring
 
@@ -19,13 +18,10 @@ public class BancoDeDados {
         cliente.setId(proximoId); //Atribui o valor do ID ao atributo id do cliente
         proximoId = proximoId.add(BigInteger.ONE); //Incrementa o atributo proximoId para o pŕoximo cliente que for adicionado ao banco
 
-        BigInteger tokenAleatorio = new BigInteger(50, new Random()); //Gera um toke aleatório
-        cliente.setToken(tokenAleatorio); //Atribui o token gerado ao atributo token do cliente
-
         clientes.put(cliente.getId(), cliente); //Utiliza o método put do HashMap para adicionar o cliente ao banco de dados com a chave sendo o id do proprio cliente
         
         System.out.println("Cliente salvo no banco: " + cliente.getNome() + " " + cliente.getSobrenome() + " com ID: " + cliente.getId() +
-            "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getToken() + "\n " + cliente.getDdd() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo() + "\n " + cliente.getEstadoAtual());
+            "\n\nDados do cliente: " + cliente.getCpf() + "\n " + cliente.getEmail() + "\n " + cliente.getDdd() + "\n " + cliente.getTelefone() + "\n " + cliente.getSaldo() + "\n " + cliente.getEstadoAtual());
         
         return cliente;
     }
