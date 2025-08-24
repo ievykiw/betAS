@@ -1,42 +1,44 @@
 package com.bet.service;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.nio.file.*;
+import java.io.IOException; // Importa a classe IOException para tratar erros de entrada e saída
+import java.math.BigDecimal; // Importa a classe BigDecimal para manipulação de números decimais, nesse caso o valor das transações
+import java.nio.file.*; // Importa as classes do pacote java.nio.file para trabalhar com arquivos e caminhos, nesse caso para tratar do histórico de transações
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service; // Importa a anotação Service do Spring para definir a classe como uma classe do tipo serviço
 
-import com.bet.models.Cliente;
+import com.bet.models.Cliente; // Importa a classe Cliente para representar o objeto cliente do usuário do sistema
 
 @Service
-public class SaldoServiceImplement implements SaldoService{
+public class SaldoServiceImplement implements SaldoService{ // Definição da classe SaldoServiceImplement para implementação dos métodos definidos na interface SaldoService
 
-    private final Path transacoesPath = Path.of("transacoes.txt");
+    private final Path transacoesPath = Path.of("transacoes.txt"); // Define o caminho do arquivo onde o histórico de transações será salvo
 
-    @Override
-    public BigDecimal deposito(Cliente cliente, BigDecimal valor){
+    @Override // Anotação da interface para que o método abaixo seja uma implementação do método definido na interface
+    public BigDecimal deposito(Cliente cliente, BigDecimal valor){ // Implementação do método de depósito de dinheiro numa conta
 
-        BigDecimal saldoAtual = cliente.getSaldo();
+        BigDecimal saldoAtual = cliente.getSaldo(); // 
         BigDecimal novoSaldo = saldoAtual.add(valor);
         cliente.setSaldo(novoSaldo);
 
         salvarTransacao(formarTransacao(cliente, "depósito", valor, 0));
+        cliente.adicionarTransacao(formarTransacao(cliente, "depósito", valor, 1));
 
         return novoSaldo;
     }
 
     @Override
-    public BigDecimal saque(Cliente cliente, BigDecimal valor){
+    public BigDecimal saque(Cliente cliente, BigDecimal valor){ // Implementação do método de saque de dinheiro numa conta
 
         BigDecimal saldoAtual = cliente.getSaldo();
         if(saldoAtual.compareTo(valor) < 0){
             throw new IllegalArgumentException("Saldo insuficiente para saque");
         }
-
-        salvarTransacao(formarTransacao(cliente, "saque", valor, 0));
-
+        
         BigDecimal novoSaldo = saldoAtual.subtract(valor);
         cliente.setSaldo(novoSaldo);
+        
+        salvarTransacao(formarTransacao(cliente, "saque", valor, 0));
+        cliente.adicionarTransacao(formarTransacao(cliente, "saque", valor, 1));
 
         return novoSaldo;
     }
