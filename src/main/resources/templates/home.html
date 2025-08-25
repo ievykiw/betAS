@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" href="/resources/styles/home.css">
+    <link rel="stylesheet" href="/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -101,154 +101,14 @@
         </defs>
     </svg>
 
-    <div class="info-carteira offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart">
-        <div class="offcanvas-header justify-content-between">
-            <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
-                <span class="carteira-usuario">Minha Carteira</span>
-            </h4>
-            <button type="button" class="btn-close align-items-center justify-content-center text-center fw-bold"
-                data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="order-md-last">
-
-                <form class="mb-3">
-                    <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
-                        <span class="deposito">Depósito</span>
-                    </h4>
-                    <div class="mb-3">
-                        <label for="valorDeposito" class="form-label">Valor (mínimo R$30,00)</label>
-                        <div class="input-group">
-                            <span class="input-group-text">R$</span>
-                            <input type="number" class="form-control" id="valorDeposito" name="valorDeposito" min="30"
-                                step="0.01" placeholder="30.00">
-                        </div>
-                    </div>
-                    <button class="w-100 btn btn-primary btn-lg" type="button" id="depositBtn">Realizar Depósito</button>
-
-
-                    <div class="modal fade" id="tokenModal" tabindex="-1" aria-labelledby="tokenModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-success text-white">
-                                    <h5 class="modal-title" id="tokenModalLabel">Confirmação de Depósito
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Valor do depósito: <span id="modalDepositValue"
-                                            class="fw-bold text-success"></span></p>
-                                    <div class="mb-3">
-                                        <label for="depositTokenInput" class="form-label token">Insira o código do
-                                            token</label>
-                                        <input type="text" class="form-control" id="depositTokenInput"
-                                            placeholder="Token de confirmação">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" id="confirmDepositBtn">Confirmar
-                                        Depósito</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
-                        <span class="saque">Saque</span>
-                    </h4>
-                    <div class="mb-3">
-                        <label for="valorSaque" class="form-label">Valor</label>
-                        <div class="input-group">
-                            <span class="input-group-text">R$</span>
-                            <input type="number" class="form-control" id="valorSaque" name="valorSaque" min="0"
-                                step="0.01" placeholder="0.00">
-                        </div>
-                    </div>
-                    <button class="w-100 btn btn-primary btn-lg" type="button" id="withdrawBtn">Realizar Saque</button>
-
-                    <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary text-white">
-                                    <h5 class="modal-title" id="withdrawModalLabel">Confirmação de Saque
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Valor do saque: <span id="modalWithdrawValue"
-                                            class="fw-bold text-primary"></span></p>
-                                    <div class="mb-3">
-                                        <label for="withdrawTokenInput" class="form-label token">Insira o código
-                                            do token</label>
-                                        <input type="text" class="form-control" id="withdrawTokenInput"
-                                            placeholder="Token de confirmação">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" id="confirmWithdrawBtn">Confirmar
-                                        Saque</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-
-                <h4 class="d-flex justify-content-between align-items-center mb-3 mt-5">
-                    <span class="historico-transacoes">Histórico de Transações</span>
-                    <span class="badge bg-primary rounded-pill">3</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Transação: <span class="text-body-secondary">Saque</span></h6>
-                            <small class="text-body-secondary">Id: <span
-                                    class="text-body-secondary">12437856</span></small>
-                        </div>
-                        <span class="text-body-secondary">R$40</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Transação: <span class="text-body-secondary">Saque</span></h6>
-                            <small class="text-body-secondary">Id: <span
-                                    class="text-body-secondary">57824930</span></small>
-                        </div>
-                        <span class="text-body-secondary">R$10</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Transação: <span class="text-body-secondary">Depósito</span></h6>
-                            <small class="text-body-secondary">Id: <span
-                                    class="text-body-secondary">62750893</span></small>
-                        </div>
-                        <span class="text-body-secondary">R$10</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (R$)</span>
-                        <strong>R$20</strong>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
     <header>
         <div class="container-fluid " id="navbar">
             <div class="row border-bottom border-2 align-items-center justify-content-between">
                 <div
                     class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
                     <div class="d-flex align-items-center my-3 my-sm-0">
-                        <a href="/resources/pages/home.html" class="navbar-brand d-flex align-items-center w-50 p-3">
-                            <img src="/resources/assets/logo.svg" alt="logo" class="img-fluid">
+                        <a href="/api/home" class="navbar-brand d-flex align-items-center w-50 p-3">
+                            <img src="/assets/logo.svg" alt="logo" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -265,7 +125,7 @@
                                 Jogos
                             </a>
                             <ul class="dropdown-menu border-0 rounded-0 shadow" aria-labelledby="gamesDropdown">
-                                <li><a class="dropdown-item fw-bold" href="category-dado.html">Jogo dos Dados</a></li>
+                                <li><a class="dropdown-item fw-bold" href="/games/dice">Jogo dos Dados</a></li>
                                 <li><a class="dropdown-item">Roleta (Em breve)</a></li>
                                 <li><a class="dropdown-item">Blackjack (Em breve)</a></li>
                                 <li><a class="dropdown-item">Poker (Em breve)</a></li>
@@ -284,25 +144,63 @@
                                 <svg width="30" height="30">
                                     <use xlink:href="#user"></use>
                                 </svg>
-                                <span style="width: 24px; color: #0F185D;">USUARIO</span>
+                                <span style="width: 24px; color: #0F185D;" th:text="${cliente.nome}"></span>
                             </a>
 
                             <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
-                                <li><a href="/resources/pages/userid.html" class="dropdown-item">Perfil</a></li>
-                                <li><a href="/resources/pages/login.html" class="dropdown-item">Sair</a></li>
-
+                                <li><a href="/info/user" class="dropdown-item">Perfil</a></li>
+                                <li>
+                                    <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#premiumModal">Tornar-se Premium</a>
+                                </li>
+                                <li><a href="/api/menu" class="dropdown-item">Sair</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="saldo p-2 mx-1" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                            <a href="/info/user#wallet" class="saldo p-2 mx-1">
                                 <svg width="30" height="30">
                                     <use xlink:href="#wallet"></use>
-                                    <span style="width: 24px; color: #0F185D;">R$20,00</span>
+                                    <span
+                                        th:text="${#numbers.formatDecimal(cliente.saldo, 1, 'POINT', 2, 'COMMA')}"></span>
                                 </svg>
                             </a>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title" id="premiumModalLabel">Tornar-se Premium</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Para se tornar Premium, o valor é <strong>R$50,00</strong>.</p>
+                        <form id="premiumForm">
+                            <div class="mb-3">
+                                <label for="cpfPremium" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="cpfPremium" placeholder="000.000.000-00"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailPremium" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailPremium" placeholder="user@email.com"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="senhaPremium" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senhaPremium" placeholder="Senha"
+                                    required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-warning" id="confirmPremiumBtn">Confirmar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -313,13 +211,14 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col-lg-6 pt-5 mt-0">
-                    <h2 class="display-1 ls-1 text-light"><span class="fw-bold text-light">Melhorando</span> a vida de
+                    <h2 class="display-1 ls-1 text-light"><span class="fw-bold text-light">Mudando</span> a vida de
                         milhões de <span class="fw-bold text-light"> Brasileiros </span></h2>
                     <p class="fs-4 text-light"><span class="fw-bold text-light">betAS</span> inovando na maneira como as
                         pessoas apostam!</p>
                     <div class="d-flex gap-3">
                         <a href="#menu-jogos" class="btn play text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Jogar</a>
-                        <a href="#" class="btn deposite text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Depositar</a>
+                        <a href="/info/user#wallet"
+                            class="btn deposite text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Depositar</a>
                     </div>
                     <div class="row my-5">
                         <div class="col">
@@ -438,31 +337,30 @@
                 <div class="col-md-12">
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">
-                            <a href="category-dado.html" class="nav-link swiper-slide text-center">
-                                <img src="/resources/assets/dados-jogos.jpg" class="rounded-circle"
-                                    alt="Dados Thumbnail">
+                            <a href="/games/dice" class="nav-link swiper-slide text-center">
+                                <img src="/assets/dados-jogos.jpg" class="rounded-circle" alt="Dados Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Jogo dos Dados</h4>
                             </a>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/roleta-casino.png" class="rounded-circle gray-out"
+                                <img src="/assets/roleta-casino.png" class="rounded-circle gray-out"
                                     alt="Roleta Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Roleta</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/blackjack-casino.png" class="rounded-circle gray-out"
+                                <img src="/assets/blackjack-casino.png" class="rounded-circle gray-out"
                                     alt="Blackjack Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Blackjack</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/poker-casino.jpg" class="rounded-circle gray-out"
+                                <img src="/assets/poker-casino.jpg" class="rounded-circle gray-out"
                                     alt="Poker Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Poker</h4>
                                 <span class="coming-soon-label">Em breve</span>
                             </div>
                             <div class="swiper-slide text-center coming-soon">
-                                <img src="/resources/assets/bingo-casino.png" class="rounded-circle gray-out"
+                                <img src="/assets/bingo-casino.png" class="rounded-circle gray-out"
                                     alt="Bingo Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Bingo</h4>
                                 <span class="coming-soon-label">Em breve</span>
@@ -475,6 +373,7 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -500,59 +399,17 @@
         });
     </script>
 
-    <!-- MODAL DEPÓSITO E SAQUE -->
+    <!--MASCARAR CPF PREMIUM-->
     <script>
-        $(document).ready(function () {
-            var depositModal = new bootstrap.Modal(document.getElementById('tokenModal'));
-            var withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'));
-
-            $('#depositBtn').on('click', function (e) {
-                e.preventDefault();
-                var depositValue = $('#valorDeposito').val();
-                if (depositValue === "" || isNaN(depositValue) || parseFloat(depositValue) < 30) {
-                    alert("O valor do depósito não pode ser vazio e deve ser no mínimo R$30,00.");
-                    return;
-                }
-                $('#modalDepositValue').text('R$ ' + parseFloat(depositValue).toFixed(2));
-                $('#depositTokenInput').val("");
-                depositModal.show();
-            });
-
-            $('#confirmDepositBtn').on('click', function () {
-                var token = $('#depositTokenInput').val();
-                var depositValue = $('#valorDeposito').val();
-                if (token.trim() === "") {
-                    alert("Por favor, insira o código do token.");
-                    return;
-                }
-
-                console.log('Depósito de R$ ' + parseFloat(depositValue).toFixed(2) + ' confirmado com token: ' + token);
-                depositModal.hide();
-            });
-
-            $('#withdrawBtn').on('click', function (e) {
-                e.preventDefault();
-                var withdrawValue = $('#valorSaque').val();
-                if (withdrawValue === "" || isNaN(withdrawValue) || parseFloat(withdrawValue) <= 0) {
-                    alert("O valor do saque não pode ser vazio ou zero.");
-                    return;
-                }
-                $('#modalWithdrawValue').text('R$ ' + parseFloat(withdrawValue).toFixed(2));
-                $('#withdrawTokenInput').val("");
-                withdrawModal.show();
-            });
-
-            $('#confirmWithdrawBtn').on('click', function () {
-                var token = $('#withdrawTokenInput').val();
-                var withdrawValue = $('#valorSaque').val();
-                if (token.trim() === "") {
-                    alert("Por favor, insira o código do token.");
-                    return;
-                }
-
-                console.log('Saque de R$ ' + parseFloat(withdrawValue).toFixed(2) + ' confirmado com token: ' + token);
-                withdrawModal.hide();
-            });
+        $('#cpfPremium').mask('000.000.000-00', {
+            reverse: true,
+            translation: {
+                '0': { pattern: /[0-9]/, optional: true }
+            }
+        });
+        $('#cpfPremium').on('blur', function () {
+            var cpf = $(this).val().replace(/\D/g, '');
+            $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
         });
     </script>
 </body>
