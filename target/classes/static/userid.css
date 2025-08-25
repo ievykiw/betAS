@@ -1,0 +1,133 @@
+body{
+  height: 100%;
+  width: auto;
+  background: linear-gradient(to right, #0F185D, #223B6F, #1F6C57, #29AC46);
+}
+
+body::after{
+  background: url(https://grainy-gradients.vercel.app/noise.svg);
+  opacity: 0.25;
+  z-index: 1;
+
+}
+
+/*TELA DE USUÁRIO*/
+
+li.nav-item button{
+  color: #0F185D;
+}
+
+li.nav-item button:hover{
+  color: #29AC46;
+}
+
+.container.rounded{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: relative;
+}
+
+.container.rounded::before {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/resources/assets/logo.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  background-size: 30rem;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+input.form-control,input[type="text"],input[type="email"],input[type="password"],input[type="number"] {
+  background: transparent !important;
+  border: 2px solid #00000076;
+  color: #0F185D;
+  box-shadow: none;
+}
+
+#ddd{
+    margin-right: 10px;
+    width: 20%;
+}
+
+#telefone{
+    width: 70%;
+}
+
+.btn.cash, .btn.deposit{
+  background-color: #29AC46;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn.cash:hover, .btn.deposit:hover {
+  background-color: #1F6C57;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(41,172,70,0.12);
+}
+
+.badge.rounded-pill{
+  background-color: #29AC46;
+}
+
+button.btn.profile-button {
+  background-color: #29AC46;
+  color: white;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+button.btn.profile-button:hover {
+  background-color: #1F6C57;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(41, 172, 69, 0.231);
+}
+
+/*VERIFICAR SENHAS*/
+
+.form-control.password-ok {
+  border: 2px solid #28a745 !important;
+  box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
+}
+.form-control.password-error {
+  border: 2px solid #dc3545 !important;
+  box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+.password-icon {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  font-size: 1.5em;
+  pointer-events: none;
+  z-index: 2;
+}
+.col-md-12.mt-2.position-relative {
+  position: relative;
+}
+
+/*NAVBAR*/
+
+.container-fluid {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+}

@@ -1,0 +1,416 @@
+body{
+  background-color: white;
+}
+
+/*HEADER*/
+
+#navbar{
+  background-color: white;
+}
+
+header .info-usuario{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+
+}
+
+.info-usuario svg{
+  margin-right: 5px;
+}
+
+.saldo{
+  text-decoration: none;
+}
+
+#gamesDropdown{
+  border: 3px solid #29AC46;
+  border-radius: 50px;
+}
+
+/* SIDEBAR CARTEIRA*/
+.info-carteira.offcanvas {
+  padding: 2rem 1.5rem;
+  min-width: 350px;
+  border-radius: 24px 0 0 24px;
+  box-shadow: -2px 0 24px rgba(0,0,0,0.12);
+}
+
+.info-carteira .offcanvas-header {
+  border-bottom: 1px solid #1F6C57;
+  margin-bottom: 1rem;
+}
+
+.info-carteira h4 {
+  color: #29AC46;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.info-carteira h4 span{
+    color: #0F185D;
+}
+
+.info-carteira .form-label {
+  color: #29AC46;
+  font-weight: 600;
+}
+
+.info-carteira .input-group-text {
+  background: #29AC46;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px 0 0 8px;
+}
+
+.info-carteira .form-control {
+  border-radius: 0 8px 8px 0;
+  border: 1px solid #29AC46;
+  background: #f8f9fa;
+  color: #0F185D;
+  font-weight: 500;
+}
+
+.info-carteira .form-control:focus {
+  border-color: #29AC46;
+  box-shadow: 0 0 0 0.2rem rgba(236,155,34,0.15);
+}
+
+.info-carteira .btn-primary {
+  background: #29AC46;
+  border: none;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+  color: #0F185D;
+  box-shadow: 0 2px 8px rgba(236,155,34,0.08);
+}
+
+.info-carteira .btn-primary:hover {
+  background: #ffb84d;
+  color: #0F185D;
+}
+
+.info-carteira .list-group {
+  margin-top: 1.5rem;
+}
+
+.info-carteira .list-group-item {
+  background: #223B6F;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-carteira .list-group-item strong {
+  color: #29AC46;
+  font-size: 1.1em;
+}
+
+.info-carteira .list-group-item .text-body-secondary {
+  color: white !important;
+}
+
+.info-carteira .badge.bg-primary {
+  background: #29AC46 !important;
+  color: #0F185D;
+  font-weight: bold;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(236,155,34,0.08);
+}
+
+.info-carteira .order-md-last {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 576px) {
+  .info-carteira.offcanvas {
+    min-width: 100vw;
+    padding: 1rem 0.5rem;
+    border-radius: 0;
+  }
+  .info-carteira .offcanvas-header {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+/*INFOS PRINCIPAIS*/
+
+.col.info .responsabilidade.card, .col.info .seguro.card, .col.info .suporte.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.3s;
+    margin: 10px;
+    border-radius: 20px !important;
+    margin-bottom: 8rem;
+}
+
+.col.info .responsabilidade.card{
+    background-color: #0F185D;
+}
+
+.col.info .seguro.card{
+    background-color: #1F6C57;
+}
+
+.col.info .suporte.card{
+    background-color: #29AC46;
+}
+
+.col.info .suporte.card a{
+  text-decoration: none;
+  background-color: white;
+  color: #0F185D;
+  font-size: small;
+  border-radius: 20px;
+  font-weight: 800;
+  padding: 5px;
+}
+
+.dropdown-toggle::after {
+    border-top-color: #0F185D !important;
+}
+
+.col.info .responsabilidade.card:hover, .col.info .seguro.card:hover, .col.info .suporte.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 24px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.05);
+} 
+
+.row.row-cols-1{
+  margin-bottom: 2rem;
+}
+
+.btn.deposite{
+  background-color: #29AC46;
+  border: 2px solid white;
+  color: white;
+  font-weight: 800;
+  transition: 0.3s ease;
+}
+
+.btn.play{
+  background-color: #0F185D;
+  border: 2px solid white;
+  color: white;
+  font-weight: 800;
+  transition: 0.3s ease;
+}
+
+.btn.play:hover, .btn.deposite:hover{
+  transform: scale(1.05);
+  color: white
+}
+
+/*JOGOS*/
+
+#container-games{
+  padding-top: 5rem;
+  height: 100vh;
+}
+
+#menu-jogos {
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(15,24,93,0.08);
+}
+
+#menu-jogos .section-header {
+  background: #0F185D;
+  border-radius: 18px;
+  padding: 1.5rem 2rem;
+  color: white;
+  box-shadow: 0 2px 12px rgba(15,24,93,0.10);
+  margin-bottom: 2rem;
+}
+#menu-jogos .section-title {
+  color: white;
+  font-weight: 800;
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
+}
+
+#menu-jogos .btn-primary {
+  background: #29AC46;
+  color: white;
+  border: none;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.6rem 1.6rem;
+  box-shadow: 0 2px 8px rgba(41,172,70,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+#menu-jogos .btn-primary:hover {
+  background: white;
+  color: #1F6C57;
+}
+#menu-jogos .swiper-buttons .btn {
+  background: #29AC46;
+  color: #0F185D;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 2px 8px rgba(249,212,74,0.10);
+  margin-left: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+#menu-jogos .swiper-buttons .btn:hover {
+  background: white;
+  color: #29AC46;
+}
+.category-carousel {
+  height: 80vh;
+}
+
+.category-carousel .swiper-slide {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(15,24,93,0.08);
+  margin: 0 10px;
+  padding: 2rem 0 1rem 0;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.category-carousel .swiper-slide:not(.coming-soon):hover {
+  box-shadow: 0 8px 32px rgba(41,172,70,0.18);
+  transform: scale(1.04);
+  background: white;
+}
+
+.category-carousel .swiper-wrapper{
+  height: 40%;
+  padding: 2rem;
+}
+
+.category-carousel .swiper-wrapper a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-carousel .swiper-slide .category-title {
+  color: #1F6C57;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.category-carousel .swiper-slide.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  filter: grayscale(0.7);
+  pointer-events: none;
+  opacity: 0.85;
+  box-shadow: 0 2px 12px rgba(15,24,93,0.04);
+}
+.category-carousel .swiper-slide.coming-soon .category-title {
+  color: gray;
+}
+.category-carousel .swiper-slide.coming-soon img.gray-out {
+  border: 4px solid white;
+  filter: grayscale(100%) brightness(0.95);
+}
+.coming-soon-label {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #223B6F;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 6px 18px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(15,24,93,0.08);
+  letter-spacing: 0.04em;
+  opacity: 0.95;
+  z-index: 2;
+}
+
+.swiper-prev,
+.swiper-next {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  background: white;
+  color: #222222;
+  padding: 0;
+  text-align: center;
+  border-radius: 10px;
+  --bs-btn-border-color: transparent;
+  --bs-btn-active-bg: #29AC46;
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-hover-bg: var(--bs-primary);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-disabled-color: white;
+  --bs-btn-disabled-bg: white;
+  --bs-btn-disabled-border-color: white;
+}
+.swiper-prev:hover,
+.swiper-next:hover {
+  background: var(--bs-primary);
+}
+
+.category-carousel .category-item {
+  background: white;
+  border: 1px solid white;
+  box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  text-align: center;
+  padding: 60px 20px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+.category-carousel .category-item:hover {
+  transform: translate3d(0,-10px,0);
+  box-shadow: 0px 21px 44px rgba(0, 0, 0, 0.08);
+}
+.category-carousel .category-item .category-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: #222222;
+  margin-top: 20px;
+}
+
+.brand-carousel .brand-item {
+  background: white;
+  border: 1px solid white;
+  box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 16px;
+}
+.brand-carousel .brand-item img {
+  width: 100%;
+  border-radius: 12px;
+}
+.brand-carousel .brand-item .brand-details {
+  margin-left: 15px;
+}
+.brand-carousel .brand-item .brand-title {
+  margin: 0;
+}
+
+.category-carousel .rounded-circle {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+img.rounded-circle.gray-out{
+  filter: grayscale(100%);
+}
+
