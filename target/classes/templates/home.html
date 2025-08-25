@@ -149,19 +149,58 @@
 
                             <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
                                 <li><a href="/info/user" class="dropdown-item">Perfil</a></li>
+                                <li>
+                                    <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#premiumModal">Tornar-se Premium</a>
+                                </li>
                                 <li><a href="/api/menu" class="dropdown-item">Sair</a></li>
-
                             </ul>
                         </li>
                         <li>
                             <a href="/info/user#wallet" class="saldo p-2 mx-1">
                                 <svg width="30" height="30">
                                     <use xlink:href="#wallet"></use>
-                                    <span th:text="${#numbers.formatDecimal(cliente.saldo, 1, 'POINT', 2, 'COMMA')}"></span>
+                                    <span
+                                        th:text="${#numbers.formatDecimal(cliente.saldo, 1, 'POINT', 2, 'COMMA')}"></span>
                                 </svg>
                             </a>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title" id="premiumModalLabel">Tornar-se Premium</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Para se tornar Premium, o valor é <strong>R$50,00</strong>.</p>
+                        <form id="premiumForm">
+                            <div class="mb-3">
+                                <label for="cpfPremium" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="cpfPremium" placeholder="000.000.000-00"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailPremium" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailPremium" placeholder="user@email.com"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="senhaPremium" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senhaPremium" placeholder="Senha"
+                                    required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-warning" id="confirmPremiumBtn">Confirmar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,7 +217,8 @@
                         pessoas apostam!</p>
                     <div class="d-flex gap-3">
                         <a href="#menu-jogos" class="btn play text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Jogar</a>
-                        <a href="/info/user#wallet" class="btn deposite text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Depositar</a>
+                        <a href="/info/user#wallet"
+                            class="btn deposite text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Depositar</a>
                     </div>
                     <div class="row my-5">
                         <div class="col">
@@ -298,8 +338,7 @@
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">
                             <a href="/games/dice" class="nav-link swiper-slide text-center">
-                                <img src="/assets/dados-jogos.jpg" class="rounded-circle"
-                                    alt="Dados Thumbnail">
+                                <img src="/assets/dados-jogos.jpg" class="rounded-circle" alt="Dados Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Jogo dos Dados</h4>
                             </a>
                             <div class="swiper-slide text-center coming-soon">
@@ -334,6 +373,7 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -356,6 +396,20 @@
                     992: { slidesPerView: 4 }
                 }
             });
+        });
+    </script>
+
+    <!--MASCARAR CPF PREMIUM-->
+    <script>
+        $('#cpfPremium').mask('000.000.000-00', {
+            reverse: true,
+            translation: {
+                '0': { pattern: /[0-9]/, optional: true }
+            }
+        });
+        $('#cpfPremium').on('blur', function () {
+            var cpf = $(this).val().replace(/\D/g, '');
+            $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
         });
     </script>
 </body>
