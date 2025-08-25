@@ -2,11 +2,13 @@ package com.bet.service;
 
 import java.io.IOException; // Importa a classe IOException para tratar erros de entrada e saída
 import java.math.BigDecimal; // Importa a classe BigDecimal para manipulação de números decimais, nesse caso o valor das transações
-import java.nio.file.*; // Importa as classes do pacote java.nio.file para trabalhar com arquivos e caminhos, nesse caso para tratar do histórico de transações
+import java.nio.file.Files; // Importa as classes do pacote java.nio.file para trabalhar com arquivos e caminhos, nesse caso para tratar do histórico de transações
+import java.nio.file.Path; // Importa a anotação Service do Spring para definir a classe como uma classe do tipo serviço
+import java.nio.file.StandardOpenOption; // Importa a classe Cliente para representar o objeto cliente do usuário do sistema
 
-import org.springframework.stereotype.Service; // Importa a anotação Service do Spring para definir a classe como uma classe do tipo serviço
+import org.springframework.stereotype.Service;
 
-import com.bet.models.Cliente; // Importa a classe Cliente para representar o objeto cliente do usuário do sistema
+import com.bet.models.Cliente;
 
 @Service
 public class SaldoServiceImplement implements SaldoService{ // Definição da classe SaldoServiceImplement para implementação dos métodos definidos na interface SaldoService
@@ -49,7 +51,7 @@ public class SaldoServiceImplement implements SaldoService{ // Definição da cl
         String nome = c.getNome() + " " + c.getSobrenome();
         if(flag == 0)
             return "%s fez um %s de R$%s".formatted(nome, acao, valor);
-        else return "Fez um %s de R$%s".formatted(acao, valor);
+        else return "Transação: %s\nId: %s\nR$%.2f".formatted(acao, c.getId(), valor);
     }
 
     private void salvarTransacao(String transacao) {

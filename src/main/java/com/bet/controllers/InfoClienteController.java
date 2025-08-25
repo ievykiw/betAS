@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bet.models.Cliente;
 import com.bet.models.Deposito;
 import com.bet.models.Premium;
+import com.bet.models.Saque;
 import com.bet.service.ClienteService;
 import com.bet.service.SaldoService;
 
@@ -40,19 +41,19 @@ public class InfoClienteController {
             model.addAttribute("cliente", cliente);
             return "user";
         } else {
-            return "redirect:/info/user"; 
+            return "redirect:/info/usuario"; 
         }
     }
     
     @PutMapping("/atualizarinfo")
     public String atualizarInformacoes(@RequestBody Cliente cliente, HttpSession session) {
         if (cliente.getSenha() == null || cliente.getSenha().isEmpty()) {    
-            return "redirect:/info/user"; // Se a senha for nula ou vazia, redireciona para a página de informações do usuário
+            return "redirect:/info/usuario"; // Se a senha for nula ou vazia, redireciona para a página de informações do usuário
         }
         
         BigInteger idCliente = (BigInteger) session.getAttribute("usuarioLogado");
         Cliente dadosCliente = clienteService.buscarPorId(idCliente);
-        return "redirect:/info/user";
+        return "redirect:/info/usuario";
     }
 
     @PostMapping("/deposito")
@@ -61,21 +62,23 @@ public class InfoClienteController {
         Cliente dadosCliente = clienteService.buscarPorId(idCliente);
         if (infoDeposito.getCpf().equals(dadosCliente.getCpf()) && infoDeposito.getEmail().equals(dadosCliente.getEmail()) && infoDeposito.getSenha().equals(dadosCliente.getSenha())) {
             saldoService.deposito(dadosCliente, infoDeposito.getValor());
-            return "redirect:/info/user";
+            System.out.println(dadosCliente.getUltimasTransacoes());
+            return "redirect:/info/usuario";
         }
-        return "redirect:/info/user";
+        return "redirect:/info/usuario";
     }
 
     @PostMapping("/saque")
     @ResponseBody
-    public String sacar(@RequestBody Deposito infoDeposito, HttpSession session) {
+    public String sacar(@RequestBody Saque infoSaque, HttpSession session) {
         BigInteger idCliente = (BigInteger) session.getAttribute("usuarioLogado");
         Cliente dadosCliente = clienteService.buscarPorId(idCliente);
-        if (infoDeposito.getCpf().equals(dadosCliente.getCpf()) && infoDeposito.getEmail().equals(dadosCliente.getEmail()) && infoDeposito.getSenha().equals(dadosCliente.getSenha())) {
-            saldoService.saque(dadosCliente, infoDeposito.getValor());
-            return "redirect:/info/user";
+        if (infoSaque.getCpf().equals(dadosCliente.getCpf()) && infoSaque.getEmail().equals(dadosCliente.getEmail()) && infoSaque.getSenha().equals(dadosCliente.getSenha())) {
+            saldoService.saque(dadosCliente, infoSaque.getValor());
+            System.out.println(dadosCliente.getUltimasTransacoes());
+            return "redirect:/info/usuario";
         }
-        return "redirect:/info/user";
+        return "redirect:/info/usuario";
     }
 
     @PostMapping("/premium")
@@ -86,10 +89,25 @@ public class InfoClienteController {
         if (infoPremium.getCpf().equals(dadosCliente.getCpf()) && infoPremium.getEmail().equals(dadosCliente.getEmail()) && infoPremium.getSenha().equals(dadosCliente.getSenha())) {
             dadosCliente.virarPremium();
             System.out.println(dadosCliente.getEstadoAtual());
-            return "redirect:/info/user";
+            return "redirect:/info/usuario";
         }
-        return "redirect:/info/user";
+        return "redirect:/info/usuario";
     }
+
+    @PostMapping("/basico")
+    @ResponseBody
+    public String tornarBasico(@RequestBody Premium infoPremium, HttpSession session) {
+        BigInteger idCliente = (BigInteger) session.getAttribute("usuarioLogado");
+        Cliente dadosCliente = clienteService.buscarPorId(idCliente);
+        if (infoPremium.getCpf().equals(dadosCliente.getCpf()) && infoPremium.getEmail().equals(dadosCliente.getEmail()) && infoPremium.getSenha().equals(dadosCliente.getSenha())) {
+            dadosCliente.virarContaPadrao();
+            System.out.println(dadosCliente.getEstadoAtual());
+            return "redirect:/info/usuario";
+        }
+        return "redirect:/info/usuario";
+    }
+
+
 
     @GetMapping("/home")
     public String showHomePage() {

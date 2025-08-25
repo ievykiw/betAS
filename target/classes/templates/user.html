@@ -223,35 +223,13 @@
                                 <span class="badge rounded-pill">3</span>
                             </h5>
                             <ul class="list-group mb-3">
-                                <li class="list-group-item d-flex justify-content-between lh-sm">
-                                    <div>
-                                        <h6 class="my-0">Transação: <span class="text-body-secondary">Saque</span></h6>
-                                        <small class="text-body-secondary">Id: <span
-                                                class="text-body-secondary">12437856</span></small>
-                                    </div>
-                                    <span class="text-body-secondary">R$40</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between lh-sm">
-                                    <div>
-                                        <h6 class="my-0">Transação: <span class="text-body-secondary">Saque</span></h6>
-                                        <small class="text-body-secondary">Id: <span
-                                                class="text-body-secondary">57824930</span></small>
-                                    </div>
-                                    <span class="text-body-secondary">R$10</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between lh-sm">
-                                    <div>
-                                        <h6 class="my-0">Transação: <span class="text-body-secondary">Depósito</span>
-                                        </h6>
-                                        <small class="text-body-secondary">Id: <span
-                                                class="text-body-secondary">62750893</span></small>
-                                    </div>
-                                    <span class="text-body-secondary">R$10</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <span>Total (R$)</span>
-                                    <strong>R$20</strong>
-                                </li>
+                                <th:block th:if="${#lists.isEmpty(cliente.ultimasTransacoes)}">
+                                </th:block>
+                                <th:block th:unless="${#lists.isEmpty(cliente.ultimasTransacoes)}">
+                                    <li th:each="transacao : ${cliente.ultimasTransacoes}" class="list-group-item">
+                                        <pre th:text="${transacao}"></pre>
+                                    </li>
+                                </th:block>
                             </ul>
                         </div>
                     </div>
@@ -487,14 +465,14 @@
                     if (!response.ok) {
                         return response.text().then(text => { throw new Error(text); });
                     }
+                    alert("Depósito realizado com sucesso!");
                     return response.text();
                 })
                 .then(data => {
                     $('#tokenModal').modal('hide');
-                    // Aqui você pode atualizar o saldo na tela, se desejar
                 })
                 .catch(error => {
-                    alert("Erro ao realizar depósito: " + error.message);
+                    alert("Erro ao realizar depósito. Tente novamente mais tarde!");
                 });
         });
     </script>
@@ -540,10 +518,9 @@
                 .then(data => {
                     alert("Saque realizado com sucesso!");
                     $('#withdrawModal').modal('hide');
-                    // Atualize o saldo na tela, se desejar
                 })
                 .catch(error => {
-                    alert("Erro ao realizar saque: " + error.message);
+                    alert("Erro ao realizar saque: Verifique seu saldo e tente novamente mais tarde!");
                 });
         });
     </script>

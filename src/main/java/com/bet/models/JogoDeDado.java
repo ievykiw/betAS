@@ -13,7 +13,6 @@
         private int dadoEscolhido;
         private boolean vitoriaDefinida;
         private Cliente cliente;
-        private String mensagem;
         private double odd;
         private double valorApostado;
         private double metaDeVitoria;
