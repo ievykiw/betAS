@@ -125,7 +125,7 @@
                                 Jogos
                             </a>
                             <ul class="dropdown-menu border-0 rounded-0 shadow" aria-labelledby="gamesDropdown">
-                                <li><a class="dropdown-item fw-bold" href="/games/dice">Jogo dos Dados</a></li>
+                                <li><a class="dropdown-item fw-bold" href="/games/dado">Jogo dos Dados</a></li>
                                 <li><a class="dropdown-item">Roleta (Em breve)</a></li>
                                 <li><a class="dropdown-item">Blackjack (Em breve)</a></li>
                                 <li><a class="dropdown-item">Poker (Em breve)</a></li>
@@ -148,7 +148,7 @@
                             </a>
 
                             <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
-                                <li><a href="/info/user" class="dropdown-item">Perfil</a></li>
+                                <li><a href="/info/usuario" class="dropdown-item">Perfil</a></li>
                                 <li>
                                     <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                         data-bs-target="#premiumModal">Tornar-se Premium</a>
@@ -157,7 +157,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/info/user#wallet" class="saldo p-2 mx-1">
+                            <a href="/info/usuario#wallet" class="saldo p-2 mx-1">
                                 <svg width="30" height="30">
                                     <use xlink:href="#wallet"></use>
                                     <span
@@ -217,7 +217,7 @@
                         pessoas apostam!</p>
                     <div class="d-flex gap-3">
                         <a href="#menu-jogos" class="btn play text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Jogar</a>
-                        <a href="/info/user#wallet"
+                        <a href="/info/atualizarinfo#wallet"
                             class="btn deposite text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Depositar</a>
                     </div>
                     <div class="row my-5">
@@ -337,7 +337,7 @@
                 <div class="col-md-12">
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">
-                            <a href="/games/dice" class="nav-link swiper-slide text-center">
+                            <a href="/games/dado" class="nav-link swiper-slide text-center">
                                 <img src="/assets/dados-jogos.jpg" class="rounded-circle" alt="Dados Thumbnail">
                                 <h4 class="fs-6 mt-3 fw-normal category-title fw-bold">Jogo dos Dados</h4>
                             </a>
@@ -411,5 +411,36 @@
             var cpf = $(this).val().replace(/\D/g, '');
             $(this).val(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'));
         });
+    </script>
+
+    <!--SCRIPT TORNAR PREMIUM-->
+    <script>
+        $('#confirmPremiumBtn').on('click', function () {
+            var cpf = $('#cpfPremium').val();
+            var email = $('#emailPremium').val();
+            var senha = $('#senhaPremium').val();
+
+            if (!cpf || !email || !senha) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            $.ajax({
+                url: '/info/premium',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ cpf: cpf, email: email, senha: senha }),
+                success: function (response) {
+                    alert('Parabéns! Você agora é um usuário Premium.');
+                    $('#premiumModal').modal('hide');
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    var errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : 'Ocorreu um erro ao processar sua solicitação.';
+                    alert(errorMessage);
+                }
+            });
+        });
+
     </script>
 </body>

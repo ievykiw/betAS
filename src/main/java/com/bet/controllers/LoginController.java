@@ -51,6 +51,7 @@ public class LoginController {
         //Se o cliente for criado com sucesso, armazena o ID do cliente na sessão HTTP
         if (clienteCriado != null) {
             session.setAttribute("usuarioLogado", clienteCriado.getId());
+            System.out.println(clienteCriado.getCpf());
         }
         //Retorna o objeto Cliente criado como resposta da requisição
         return clienteCriado;

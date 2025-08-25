@@ -10,9 +10,6 @@ public class RegistroUser {
     private String telefone;
     private String ddd;
     
-    
-
-
     public String getNome() {
         return nome;
     }

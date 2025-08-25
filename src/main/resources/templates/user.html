@@ -457,6 +457,97 @@
         });
     </script>
 
+    <script>
+        $('#confirmDepositBtn').on('click', function () {
+            var valor = $('#valorDeposito').val();
+            var cpf = $('#cpfDeposit').val();
+            var email = $('#emailDeposit').val();
+            var senha = $('#senhaDeposit').val();
+
+            if (!valor || !cpf || !email || !senha) {
+                alert("Preencha todos os campos do depósito.");
+                return;
+            }
+
+            // Monta o objeto para envio
+            var depositoData = {
+                valor: parseFloat(valor),
+                cpf: cpf,
+                email: email,
+                senha: senha
+            };
+
+            // Envia a requisição de depósito para o backend
+            fetch('http://localhost:8080/info/deposito', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(depositoData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text); });
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    $('#tokenModal').modal('hide');
+                    // Aqui você pode atualizar o saldo na tela, se desejar
+                })
+                .catch(error => {
+                    alert("Erro ao realizar depósito: " + error.message);
+                });
+        });
+    </script>
+
+    <script>
+        $('#confirmWithdrawBtn').on('click', function () {
+            var valor = parseFloat($('#valorSaque').val());
+            var cpf = $('#cpfWithdraw').val();
+            var email = $('#emailWithdraw').val();
+            var senha = $('#senhaWithdraw').val();
+            var saldoAtual = parseFloat($('#saldo-usuario').text().replace(',', '.'));
+
+            if (!valor || !cpf || !email || !senha) {
+                alert("Preencha todos os campos do saque.");
+                return;
+            }
+
+            if (valor > saldoAtual) {
+                alert("Saldo insuficiente para o saque.");
+                return;
+            }
+
+            // Monta o objeto para envio
+            var depositoData = {
+                valor: valor,
+                cpf: cpf,
+                email: email,
+                senha: senha
+            };
+
+            // Envia a requisição de saque para o backend
+            fetch('http://localhost:8080/info/saque', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(depositoData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text); });
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    alert("Saque realizado com sucesso!");
+                    $('#withdrawModal').modal('hide');
+                    // Atualize o saldo na tela, se desejar
+                })
+                .catch(error => {
+                    alert("Erro ao realizar saque: " + error.message);
+                });
+        });
+    </script>
+
 </body>
 
 </html>

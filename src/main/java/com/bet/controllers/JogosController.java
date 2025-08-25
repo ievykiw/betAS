@@ -28,7 +28,7 @@ public class JogosController {
         this.clienteService = clienteService;
     }
 
-    @PostMapping("/result")
+    @PostMapping("/resultado")
     @ResponseBody
     public ResultadoDoJogo jogarDado(@RequestBody JogoDeDadoInvestimento rodadaJogo, HttpSession session) {
         BigInteger idCliente = (BigInteger) session.getAttribute("usuarioLogado");
@@ -54,7 +54,7 @@ public class JogosController {
         return resultado;
     }
 
-    @GetMapping("/dice")
+    @GetMapping("/dado")
     public String mostrarJogoDeDado(HttpSession session, Model model) {
         BigInteger idCliente = (BigInteger) session.getAttribute("usuarioLogado");
         if (idCliente != null) {

@@ -87,7 +87,7 @@
                                 Jogos
                             </a>
                             <ul class="dropdown-menu border-0 rounded-0 shadow" aria-labelledby="gamesDropdown">
-                                <li><a class="dropdown-item fw-bold" href="/games/dice">Jogo dos Dados</a></li>
+                                <li><a class="dropdown-item fw-bold" href="/games/dado">Jogo dos Dados</a></li>
                                 <li><a class="dropdown-item">Roleta (Em breve)</a></li>
                                 <li><a class="dropdown-item">Blackjack (Em breve)</a></li>
                                 <li><a class="dropdown-item">Poker (Em breve)</a></li>
@@ -110,13 +110,13 @@
                             </a>
 
                             <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
-                                <li><a href="/info/user" class="dropdown-item">Perfil</a></li>
+                                <li><a href="/info/usuario" class="dropdown-item">Perfil</a></li>
                                 <li><a href="/api/menu" class="dropdown-item">Sair</a></li>
 
                             </ul>
                         </li>
                         <li>
-                            <a href="/info/user#wallet" class="saldo p-2 mx-1">
+                            <a href="/info/usuario#wallet" class="saldo p-2 mx-1">
                                 <svg width="30" height="30">
                                     <use xlink:href="#wallet"></use>
                                     <span id="saldo-usuario"
@@ -286,7 +286,7 @@
             };
 
             try {
-                const response = await fetch('/games/result', {
+                const response = await fetch('/games/resultado', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
