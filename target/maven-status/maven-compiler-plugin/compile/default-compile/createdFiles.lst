@@ -2,7 +2,9 @@ com\bet\models\TipoContaState.class
 com\bet\models\RegistroUser.class
 com\bet\service\ClienteServiceImplement.class
 com\bet\models\ResultadoDoJogo.class
+com\bet\models\Deposito.class
 com\bet\controllers\LoginController.class
+com\bet\models\Premium.class
 com\bet\models\InfoEditadaCliente.class
 com\bet\models\EstadoPremium.class
 com\bet\controllers\JogosController.class
@@ -13,6 +15,7 @@ com\bet\service\SaldoService.class
 com\bet\controllers\InfoClienteController.class
 com\bet\models\EstadoNormal.class
 com\bet\models\BancoDeDados.class
+com\bet\models\Saque.class
 com\bet\BetasApp.class
 com\bet\models\JogoDeDadoInvestimento.class
 com\bet\models\Cliente.class

@@ -7,21 +7,21 @@ import java.math.BigDecimal; // Importa a classe BigDecimal para manipulação d
 
 import static org.junit.jupiter.api.Assertions.*; // Importa os métodos estáticos de Assertions, como assertEquals e assertNull, para verificar os resultados dos testes
 
-class SaqueTest { // Declara a classe de teste SaqueTest, responsável por validar o comportamento da classe Saque
+class DepositoTest { // Declara a classe de teste DepositoTest, responsável por validar o comportamento da classe Deposito
 
-    private Saque saque; // Declara um atributo do tipo Saque que será usado nos testes
+    private Deposito deposito; // Declara um atributo do tipo Deposito que será usado nos testes
 
     @BeforeEach // Anotação que indica que o método abaixo será executado antes de cada teste, garantindo a preparação do objeto
     void setUp() {
-        saque = new Saque(); // Inicializa um novo objeto Saque antes de cada execução de teste
+        deposito = new Deposito(); // Inicializa um novo objeto Deposito antes de cada execução de teste
     }
 
-    @Test // Anotação do JUnit usada para marcar um método como teste
+    @Test  // Anotação do JUnit usada para marcar um método como teste
     void testSeteGetValor() {
         BigDecimal valorEsperado = new BigDecimal("100.50");
         
-        saque.setValor(valorEsperado);
-        BigDecimal valorObtido = saque.getValor();
+        deposito.setValor(valorEsperado);
+        BigDecimal valorObtido = deposito.getValor();
         
         assertEquals(valorEsperado, valorObtido);
         assertEquals(0, valorEsperado.compareTo(valorObtido));
@@ -29,8 +29,8 @@ class SaqueTest { // Declara a classe de teste SaqueTest, responsável por valid
 
     @Test
     void testSeteGetValorNulo() {
-        saque.setValor(null);
-        BigDecimal valorObtido = saque.getValor();
+        deposito.setValor(null);
+        BigDecimal valorObtido = deposito.getValor();
         
         assertNull(valorObtido);
     }
@@ -39,16 +39,16 @@ class SaqueTest { // Declara a classe de teste SaqueTest, responsável por valid
     void testSeteGetCpf() {
         String cpfEsperado = "123.456.789-00";
         
-        saque.setCpf(cpfEsperado);
-        String cpfObtido = saque.getCpf();
+        deposito.setCpf(cpfEsperado);
+        String cpfObtido = deposito.getCpf();
         
         assertEquals(cpfEsperado, cpfObtido);
     }
 
     @Test
     void testSeteGetCpfNulo() {
-        saque.setCpf(null);
-        String cpfObtido = saque.getCpf();
+        deposito.setCpf(null);
+        String cpfObtido = deposito.getCpf();
         
         assertNull(cpfObtido);
     }
@@ -57,8 +57,8 @@ class SaqueTest { // Declara a classe de teste SaqueTest, responsável por valid
     void testSeteGetEmail() {
         String emailEsperado = "cliente@email.com";
         
-        saque.setEmail(emailEsperado);
-        String emailObtido = saque.getEmail();
+        deposito.setEmail(emailEsperado);
+        String emailObtido = deposito.getEmail();
         
         assertEquals(emailEsperado, emailObtido);
     }
@@ -67,8 +67,8 @@ class SaqueTest { // Declara a classe de teste SaqueTest, responsável por valid
     void testSetAndGetSenha() {
         String senhaEsperada = "senhaSegura123";
         
-        saque.setSenha(senhaEsperada);
-        String senhaObtida = saque.getSenha();
+        deposito.setSenha(senhaEsperada);
+        String senhaObtida = deposito.getSenha();
         
         assertEquals(senhaEsperada, senhaObtida);
     }
@@ -77,8 +77,8 @@ class SaqueTest { // Declara a classe de teste SaqueTest, responsável por valid
     void testSeteGetSenhaVazia() {
         String senhaEsperada = "";
         
-        saque.setSenha(senhaEsperada);
-        String senhaObtida = saque.getSenha();
+        deposito.setSenha(senhaEsperada);
+        String senhaObtida = deposito.getSenha();
         
         assertEquals(senhaEsperada, senhaObtida);
     }
@@ -90,23 +90,23 @@ class SaqueTest { // Declara a classe de teste SaqueTest, responsável por valid
         String email = "joao.silva@bet.com";
         String senha = "minhaSenhaSecreta";
         
-        saque.setValor(valor);
-        saque.setCpf(cpf);
-        saque.setEmail(email);
-        saque.setSenha(senha);
+        deposito.setValor(valor);
+        deposito.setCpf(cpf);
+        deposito.setEmail(email);
+        deposito.setSenha(senha);
         
-        assertEquals(valor, saque.getValor());
-        assertEquals(cpf, saque.getCpf());
-        assertEquals(email, saque.getEmail());
-        assertEquals(senha, saque.getSenha());
+        assertEquals(valor, deposito.getValor());
+        assertEquals(cpf, deposito.getCpf());
+        assertEquals(email, deposito.getEmail());
+        assertEquals(senha, deposito.getSenha());
     }
 
     @Test
     void testeBigDecimalValor() {
         BigDecimal valorPreciso = new BigDecimal("123.4567");
         
-        saque.setValor(valorPreciso);
-        BigDecimal valorObtido = saque.getValor();
+        deposito.setValor(valorPreciso);
+        BigDecimal valorObtido = deposito.getValor();
         
         assertEquals(valorPreciso, valorObtido);
         assertEquals(4, valorObtido.scale());
