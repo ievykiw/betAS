@@ -2,36 +2,13 @@ package com.bet.models;
 
 import java.math.BigDecimal;
 
-public class Deposito {
-    private BigDecimal valor;
-    private String cpf;
-    private String email;
-    private String senha;
+public class Deposito extends Transacao {
 
-    public BigDecimal getValor() {
-        return valor;
+    public Deposito(){
+        super();
     }
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-    public String getCpf() {
-        return cpf;
-    }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
+
+    public Deposito(BigDecimal valor, String cpf, String email, String senha) {
+        super(valor, cpf, email, senha);
     }
 }
-
-
