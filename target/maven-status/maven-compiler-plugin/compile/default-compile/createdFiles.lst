@@ -2,6 +2,7 @@ com\bet\models\TipoContaState.class
 com\bet\models\RegistroUser.class
 com\bet\service\ClienteServiceImplement.class
 com\bet\models\ResultadoDoJogo.class
+com\bet\models\Transacao.class
 com\bet\models\Deposito.class
 com\bet\controllers\LoginController.class
 com\bet\models\Premium.class
