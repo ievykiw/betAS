@@ -279,6 +279,17 @@
             const odd = parseFloat(document.getElementById('oddSelect').value);
             const valorApostado = parseFloat(document.getElementById('valorAposta').value);
 
+            // Validação extra para impedir valores nulos, negativos e mais de duas casas decimais
+            if (isNaN(valorApostado) || valorApostado < 2) {
+                alert("O valor da aposta deve ser no mínimo R$2,00.");
+                return;
+            }
+            // Verifica se tem mais de duas casas decimais
+            if (!/^\d+(\.\d{1,2})?$/.test(document.getElementById('valorAposta').value)) {
+                alert("O valor da aposta deve ter no máximo duas casas decimais.");
+                return;
+            }
+
             const payload = {
                 dadoEscolhido: dadoEscolhido,
                 odd: odd,
@@ -317,7 +328,7 @@
 
                 // Atualiza textos de resultado
                 document.getElementById('result-unit').textContent =
-                    `${result.dadoAzul1} | ${result.dadoAzul2}` + "\n" +`${result.dadoVerde1} | ${result.dadoVerde2}`;
+                    `${result.dadoAzul1} | ${result.dadoAzul2}` + "\n" + `${result.dadoVerde1} | ${result.dadoVerde2}`;
                 document.getElementById('result-categoric').textContent =
                     `Azul: ${result.dadoAzul1 + result.dadoAzul2}` + "\n" + `Verde: ${result.dadoVerde1 + result.dadoVerde2}`;
                 document.getElementById('result-global').textContent =

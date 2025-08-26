@@ -88,6 +88,7 @@ public class InfoClienteController {
         Cliente dadosCliente = clienteService.buscarPorId(idCliente);
         if (infoPremium.getCpf().equals(dadosCliente.getCpf()) && infoPremium.getEmail().equals(dadosCliente.getEmail()) && infoPremium.getSenha().equals(dadosCliente.getSenha())) {
             dadosCliente.virarPremium();
+            saldoService.saque(dadosCliente, new java.math.BigDecimal(50));
             System.out.println(dadosCliente.getEstadoAtual());
             return "redirect:/info/usuario";
         }

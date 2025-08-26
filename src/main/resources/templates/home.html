@@ -217,7 +217,7 @@
                         pessoas apostam!</p>
                     <div class="d-flex gap-3">
                         <a href="#menu-jogos" class="btn play text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Jogar</a>
-                        <a href="/info/atualizarinfo#wallet"
+                        <a href="/info/usuario#wallet"
                             class="btn deposite text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Depositar</a>
                     </div>
                     <div class="row my-5">
@@ -431,7 +431,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify({ cpf: cpf, email: email, senha: senha }),
                 success: function (response) {
-                    alert('Parabéns! Você agora é um usuário Premium.');
+                    alert('Seus dados foram recebidos para validação! Obrigado por escolher ser mais um dos BetAS Premium.');
                     $('#premiumModal').modal('hide');
                     location.reload();
                 },
