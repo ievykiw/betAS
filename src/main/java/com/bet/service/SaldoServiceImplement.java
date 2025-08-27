@@ -9,11 +9,18 @@ import java.nio.file.StandardOpenOption;
 import org.springframework.stereotype.Service; // Importa a anotação Service do Spring para definir a classe como uma classe do tipo serviço
 
 import com.bet.models.Cliente; // Importa a classe Cliente para representar o objeto cliente e tratar diretamente do seu saldo
+import com.bet.models.BancoDeDados;
 
 @Service
 public class SaldoServiceImplement implements SaldoService{ // Definição da classe SaldoServiceImplement para implementação dos métodos definidos na interface SaldoService
 
     private final Path transacoesPath = Path.of("transacoes.txt"); // Define o caminho do arquivo onde o histórico de transações será salvo
+
+    private final BancoDeDados bancoDeDados; //Criação de um atributo constante do tipo BancoDeDados para acessar os dados dos clientes cadastrados
+
+    public SaldoServiceImplement(BancoDeDados bancoDeDados) { // Construtor para injetar o BancoDeDados no SaldoServiceImplement
+        this.bancoDeDados = bancoDeDados;
+    }
 
     @Override // Anotação da interface para que o método abaixo seja uma implementação do método definido na interface
     public BigDecimal deposito(Cliente cliente, BigDecimal valor){ // Implementação do método de depósito de dinheiro numa conta
@@ -24,6 +31,7 @@ public class SaldoServiceImplement implements SaldoService{ // Definição da cl
 
         salvarTransacao(formarTransacao(cliente, "depósito", valor, 0)); // Salva a transação feita em arquivo, nesse caso o arquivo do histórico de transações
         cliente.adicionarTransacao(formarTransacao(cliente, "depósito", valor, 1)); // Salva a transação feita no histórico associado ao cliente específico
+        bancoDeDados.atualizarCliente(cliente); // Atualiza o saldo do cliente diretamente no banco
 
         return novoSaldo;
     }
@@ -41,6 +49,7 @@ public class SaldoServiceImplement implements SaldoService{ // Definição da cl
         
         salvarTransacao(formarTransacao(cliente, "saque", valor, 0)); // Salva a transação feita em arquivo, nesse caso o arquivo do histórico de transações
         cliente.adicionarTransacao(formarTransacao(cliente, "saque", valor, 1)); // Salva a transação feita no histórico associado ao cliente específico
+        bancoDeDados.atualizarCliente(cliente); // Atualiza o saldo do cliente diretamente no banco
 
         return novoSaldo;
     }
