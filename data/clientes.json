@@ -1,0 +1,33 @@
+{
+  "clientes" : {
+    "1" : {
+      "id" : 1,
+      "saldo" : 198.00,
+      "nome" : "77",
+      "sobrenome" : "77",
+      "cpf" : "77",
+      "email" : "77@77",
+      "senha" : "77",
+      "ddd" : "77",
+      "telefone" : "7 7",
+      "ultimasTransacoes" : [ "Transação: depósito\nId: 1\nR$100,00", "Transação: saque\nId: 1\nR$50,00", "Transação: saque\nId: 1\nR$50,00" ],
+      "fatorProbabilidade" : 0.45,
+      "estadoAtual" : "PREMIUM"
+    },
+    "2" : {
+      "id" : 2,
+      "saldo" : 26.00,
+      "nome" : "88",
+      "sobrenome" : "88",
+      "cpf" : "88",
+      "email" : "88@88",
+      "senha" : "88",
+      "ddd" : "88",
+      "telefone" : "8 8",
+      "ultimasTransacoes" : [ "Transação: saque\nId: 2\nR$150,00", "Transação: saque\nId: 2\nR$50,00", "Transação: depósito\nId: 2\nR$30,00" ],
+      "fatorProbabilidade" : 0.45,
+      "estadoAtual" : "PREMIUM"
+    }
+  },
+  "proximoId" : 3
+}

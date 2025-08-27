@@ -1,11 +1,14 @@
 package com.bet.models;
 
+import com.fasterxml.jackson.annotation.*;  
+
 import java.math.BigDecimal; //Importa a classe BigDecimal para manipulação de números decimais, nesse caso o Saldo do Cliente
 import java.math.BigInteger; //Importa a classe BigInteger para manipulação de números inteiros grandes (nesse caso o ID)
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true) // Notação da biblioteca jackson, usada nesse caso para ignorar atributos que não sirvam para reinicialização do banco de dados
 public class Cliente { //Definição da classe Cliente com todos os atributos e métodos necessários para manipulação dos dados do cliente
     private BigInteger id; //Atributo id do cliente
     private BigDecimal saldo; //Atributo saldo do cliente
@@ -17,6 +20,8 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
     private String senha; //Atributo senha do cliente
     private String ddd; //Atributo ddd do cliente, utilizado para validação de telefone
     private String telefone; //Atributo telefone do cliente
+
+    @JsonIgnore // Notação da biblioteca jackson, usada nesse caso para implementar uma lógica adjascente ao inicializar este atributo na reinicialização do programa
     private TipoContaState estadoAtual; // Atributo da classe de estado atrelado ao State
 
     private List<String> ultimasTransacoes = new ArrayList<>(3); // Atributo lista de últimas transações relacionadas ao cliente
@@ -126,10 +131,12 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
 
     public void perderAposta(BigDecimal valorPerdido){
         this.saldo = this.saldo.subtract(valorPerdido);
+        BancoDeDados.atualizarAgora(this);
     }
     
     public void ganharAposta(BigDecimal valorGanho){
         this.saldo = this.saldo.add(valorGanho);
+        BancoDeDados.atualizarAgora(this);
     }
 
     public List<String> getUltimasTransacoes(){
@@ -143,6 +150,15 @@ public class Cliente { //Definição da classe Cliente com todos os atributos e 
         ultimasTransacoes.add(linha);
     }
     
+    @JsonProperty("estadoAtual") // Notação da biblioteca jackson para definir a nova propriedade estadoAtual
+    public String getEstadoAtualNome() {
+        return EstadoAlternar.EstadoParaString(estadoAtual);
+    }
+
+    @JsonProperty("estadoAtual")
+    void setEstadoAtualNome(String nome) {
+        this.estadoAtual = EstadoAlternar.StringParaEstado(nome);
+    }
 }
 
 
