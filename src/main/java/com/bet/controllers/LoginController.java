@@ -9,16 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bet.models.Cliente;
-import com.bet.models.LoginUser; //Importa a classe Cliente que representa o usuário do sistema
-import com.bet.models.RegistroUser; //Importa a classe LoginUser para verificação  dos dados de login do usuário
-import com.bet.service.ClienteService; //Importa a classe RegistroUser para verificação dos dados de registro de novos usuários
+import com.bet.models.LoginUser;
+import com.bet.models.RegistroUser; //Importa a classe Cliente que representa o usuário do sistema
+import com.bet.service.ClienteService; //Importa a classe LoginUser para verificação  dos dados de login do usuário
 
 @Controller //Anotação Spring MVC para indicar que esta classe é um controlador e que irá lidar com requisições HTTP
-@RequestMapping("/api") //Anotação para definir o caminho base para as rotas do controlador LoginController 
 public class LoginController {
 
     private final ClienteService clienteService; //Criando um atributo constante do tipo ClienteService para acessar os méetodos de serviço relacionados ao Cliente
@@ -28,7 +26,7 @@ public class LoginController {
         this.clienteService = clienteService;
     }
 
-    @PostMapping("/logar") //Anotação para mapear requisições do tipo POST e definição do caminho /logar para o método de login
+    @PostMapping("/api/logar") //Anotação para mapear requisições do tipo POST e definição do caminho /logar para o método de login
     @ResponseBody //Anotação para inidicar que a informação retornada pelo método será escrita diretamente no corpo da resposta HTTP
     //Método para validar o login do cliente, recebendo um objeto do tipo LoginUser e a sessão HTTP
     public Cliente logar(@RequestBody LoginUser loginUser, HttpSession session) {  //O RquestBody é usando para converter o corpo da requisição em um objeto do tipo RegistroUser e o HttpSession é usado para armazenar informações do usuário registrado
@@ -42,7 +40,7 @@ public class LoginController {
         return cliente;
     }
 
-    @PostMapping("/registrar") //Anotação para mapear requisições do tipo POST e definição do caminho /registrar para o método de registro
+    @PostMapping("/api/registrar") //Anotação para mapear requisições do tipo POST e definição do caminho /registrar para o método de registro
     @ResponseBody
     //Método para registrar um novo cliente, recebendo um objeto do tipo RegistroUser e a sessão HTTP
     public Cliente registrar(@RequestBody RegistroUser registroUser, HttpSession session) {
@@ -69,11 +67,11 @@ public class LoginController {
             return "home"; //Retorna o nome da view será carregado pela ferramenta de templates, nesse caso, o Thymeleaf
         } else {
             //Se o ID do cliente for nulo, redireciona para a página de login
-            return "redirect:/api/menu"; 
+            return "redirect:/"; 
         }
     }
     
-    @GetMapping("/menu") // Anotação para mapear requisições do tipo GET e definição do caminho /login para o método showLoginPage
+    @GetMapping("/") // Anotação para mapear requisições do tipo GET e definição do caminho /login para o método showLoginPage
     public String showLoginPage() { // Método para exibir a página de login 
         return "menu"; // Isso renderiza o arquivo /resources/templates/login.html
     }

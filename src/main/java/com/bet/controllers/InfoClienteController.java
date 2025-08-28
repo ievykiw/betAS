@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping; //Importa as anotações do Spring MVC para definição da classe controladora, mapeamento de rotas e manipulação de requisições
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,17 +42,6 @@ public class InfoClienteController {
         } else {
             return "redirect:/info/usuario"; 
         }
-    }
-    
-    @PutMapping("/atualizarinfo")
-    public String atualizarInformacoes(@RequestBody Cliente cliente, HttpSession session) {
-        if (cliente.getSenha() == null || cliente.getSenha().isEmpty()) {    
-            return "redirect:/info/usuario"; // Se a senha for nula ou vazia, redireciona para a página de informações do usuário
-        }
-        
-        BigInteger idCliente = (BigInteger) session.getAttribute("usuarioLogado");
-        Cliente dadosCliente = clienteService.buscarPorId(idCliente);
-        return "redirect:/info/usuario";
     }
 
     @PostMapping("/deposito")

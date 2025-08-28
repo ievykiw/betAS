@@ -140,15 +140,12 @@
 
     <script>
         $(document).ready(function () {
+            // MÁSCARAS
             $('#dddReg').mask('00');
-            $('#telefoneReg').mask('9 0000-0000');
-            $('#cpfReg').mask('000.000.000-00', {
-                reverse: true,
-                translation: {
-                    '0': { pattern: /[0-9]/, optional: true }
-                }
-            });
+            $('#telefoneReg').mask('0 0000-0000');
+            $('#cpfReg').mask('000.000.000-00', { reverse: true });
 
+            // FEEDBACK VISUAL DA SENHA (enquanto digita)
             function updatePasswordValidationReg() {
                 var senha = $('#novaSenhaReg').val();
                 var confirmar = $('#confirmarSenhaReg').val();
@@ -167,44 +164,70 @@
                     $('#iconSenhaReg, #iconConfirmarReg').html('');
                 }
             }
-
             $('#novaSenhaReg, #confirmarSenhaReg').on('input', updatePasswordValidationReg);
 
+            // VALIDAÇÃO COMPLETA NO ENVIO DO REGISTRO
             $('#registerForm').on('submit', function (e) {
                 e.preventDefault();
-                var data = {
-                    nome: $('input[name="nome"]', this).val(),
-                    sobrenome: $('input[name="sobrenome"]', this).val(),
-                    cpf: $('input[name="cpf"]', this).val(),
-                    ddd: $('input[name="ddd"]', this).val(),
-                    telefone: $('input[name="telefone"]', this).val(),
-                    email: $('input[name="email"]', this).val(),
-                    senha: $('input[name="novaSenha"]', this).val()
-                };
 
-                fetch('http://localhost:8080/api/registrar', {
+                const apenasLetrasEspacos = /^[a-zA-Z\s]+$/;
+                const formatoEmailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                var nome = $('input[name="nome"]', this).val().trim();
+                var sobrenome = $('input[name="sobrenome"]', this).val().trim();
+                var cpf = $('input[name="cpf"]', this).val();
+                var ddd = $('input[name="ddd"]', this).val();
+                var telefone = $('input[name="telefone"]', this).val();
+                var email = $('input[name="email"]', this).val().trim();
+                var senha = $('#novaSenhaReg').val();
+                var confirmarSenha = $('#confirmarSenhaReg').val();
+
+                if (!nome || !sobrenome || !cpf || !ddd || !telefone || !email || !senha || !confirmarSenha) {
+                    alert('Todos os campos são obrigatórios.');
+                    return;
+                }
+
+                if (!apenasLetrasEspacos.test(nome) || !apenasLetrasEspacos.test(sobrenome)) {
+                    alert('Nome e Sobrenome devem conter apenas letras e espaços.');
+                    return;
+                }
+
+                if (!formatoEmailValido.test(email)) {
+                    alert('Por favor, insira um formato de e-mail válido.');
+                    return;
+                }
+
+                if (senha.length < 6) {
+                    alert('A senha deve ter no mínimo 6 caracteres.');
+                    return;
+                }
+
+                if (senha !== confirmarSenha) {
+                    alert('As senhas não coincidem. Por favor, verifique.');
+                    return;
+                }
+
+                var data = { nome, sobrenome, cpf, ddd, telefone, email, senha };
+
+                fetch('/api/registrar', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Erro no registro: ' + response.status);
-                        }
-                        return response.json();
-                    })
-                    .then(clienteRegistrado => {
-                        alert('Bem-vindo, ' + clienteRegistrado.nome + '! Seu registro foi concluído.');
-                        window.location.href = 'http://localhost:8080/api/home';
-
-                    })
-                    .catch(error => {
-                        alert('Não foi possível registrar. Verifique o console para detalhes.');
-                    });
+                .then(response => {
+                    if (!response.ok) throw new Error('Erro no registro: ' + response.status);
+                    return response.json();
+                })
+                .then(clienteRegistrado => {
+                    alert('Bem-vindo, ' + clienteRegistrado.nome + '! Seu registro foi concluído.');
+                    window.location.href = '/home';
+                })
+                .catch(error => {
+                    alert('Não foi possível registrar. Verifique o console para detalhes.');
+                });
             });
 
+            // ENVIO DO LOGIN
             $('#loginForm').on('submit', function (e) {
                 e.preventDefault();
                 var loginData = {
@@ -212,26 +235,26 @@
                     senha: $('#userPassword').val()
                 };
 
-                fetch('http://localhost:8080/api/logar', {
+                fetch('/api/logar', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(loginData),
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Erro no login: ' + response.status);
-                        }
-                        return response.json();
-                    })
-                    .then(clienteLogado => {
+                .then(response => {
+                    if (!response.ok) throw new Error('Erro no login: ' + response.status);
+                    return response.json();
+                })
+                .then(clienteLogado => {
+                    if (clienteLogado && clienteLogado.nome) {
                         alert('Bem-vindo de volta, ' + clienteLogado.nome + '!');
-                        window.location.href = 'http://localhost:8080/api/home';
-                    })
-                    .catch(error => {
-                        alert('Não foi possível fazer o login. Verifique o console para detalhes.');
-                    });
+                        window.location.href = '/home';
+                    } else {
+                        alert('Email ou senha inválidos.');
+                    }
+                })
+                .catch(error => {
+                    alert('Não foi possível fazer o login. Verifique o console para detalhes.');
+                });
             });
         });
     </script>

@@ -21,7 +21,7 @@
                 <div
                     class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
                     <div class="d-flex align-items-center my-3 my-sm-0">
-                        <a href="/api/home" class="navbar-brand d-flex align-items-center w-50 p-3">
+                        <a href="/home" class="navbar-brand d-flex align-items-center w-50 p-3">
                             <img src="/assets/logo.svg" alt="logo" class="img-fluid">
                         </a>
                     </div>
@@ -46,66 +46,39 @@
             <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
                 <div class="row">
                     <div class="col-md-8 mx-auto">
-                        <form class="p-3 py-5" id="formInfo" method="post" action="#">
+                        <div class="p-3 py-5" id="panelInfo">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Informações Pessoais</h4>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Nome</label><input type="text"
-                                        class="form-control" name="nome" th:value="${cliente.nome}"></div>
-                                <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text"
-                                        class="form-control" name="sobrenome" th:value="${cliente.sobrenome}"></div>
+                                <div class="col-md-6">
+                                    <label class="labels">Nome</label>
+                                    <input type="text" class="form-control" name="nome" th:value="${cliente.nome}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">Sobrenome</label>
+                                    <input type="text" class="form-control" name="sobrenome" th:value="${cliente.sobrenome}" readonly>
+                                </div>
                             </div>
-                            <div class="row-md-6 mt-3">
+                            <div class="row mt-3">
                                 <div class="col-md-12">
                                     <label class="labels">CPF</label>
-                                    <input type="text" class="form-control" id="cpf" name="cpf"
-                                        placeholder="000.000.000-00" th:value="${cliente.cpf}">
+                                    <input type="text" class="form-control" id="cpf" name="cpf" th:value="${cliente.cpf}" readonly>
                                 </div>
-                                <div class="col-md-5">
-                                    <label class="labels mt-2" for="ddd">DDD</label>
-                                    <input type="text" class="form-control mb-2" id="ddd" name="ddd" maxlength="2"
-                                        th:value="${cliente.ddd}" />
-
-                                    <label class="labels mt-2" for="telefone">Telefone</label>
-                                    <input type="text" class="form-control" id="telefone" name="telefone"
-                                        th:value="${cliente.telefone}" />
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Telefone</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" th:text="'(' + ${cliente.ddd} + ')'"></span>
+                                        <input type="text" class="form-control" id="telefone" name="telefone" th:value="${cliente.telefone}" readonly>
+                                    </div>
                                 </div>
-                                <div class="col-md-12 mt-2"><label class="labels">Email</label><input type="email"
-                                        class="form-control" name="email" placeholder="user@email.com"
-                                        th:value="${cliente.email}"></div>
-
-                                <div class="col-md-12 mt-2"><label class="labels">Senha Atual</label><input
-                                        type="password" class="form-control" id="senhaAtual" name="senhaAtual" value="">
-                                    <input type="checkbox" id="showSenhaAtual" onclick="funcshowSenhaAtual()">
-                                    Mostrar Senha
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Email</label>
+                                    <input type="email" class="form-control" name="email" th:value="${cliente.email}" readonly>
                                 </div>
-
-                                <div class="col-md-12 mt-2 position-relative">
-                                    <label class="labels" for="novaSenha">Nova Senha</label>
-                                    <input type="password" class="form-control" id="novaSenha" name="novaSenha"
-                                        autocomplete="new-password">
-                                    <input type="checkbox" id="showSenhaNova" onclick="funcshowSenhaNova()"> Mostrar
-                                    Nova
-                                    Senha
-
-                                    <span id="iconSenha" class="password-icon"></span>
-                                </div>
-
-                                <div class="col-md-12 mt-2 position-relative">
-                                    <label class="labels" for="confirmarSenha">Confirmar Nova Senha</label>
-                                    <input type="password" class="form-control" id="confirmarSenha"
-                                        name="confirmarSenha" autocomplete="new-password">
-                                    <input type="checkbox" id="showConfirmarSenha" onclick="funcshowConfirmarSenha()">
-                                    Mostrar Confirmação de Senha
-
-                                    <span id="iconConfirmar" class="password-icon"></span>
-                                </div>
-
                             </div>
-                            <div class="mt-5 text-center"><button class="btn profile-button" type="submit">Salvar
-                                    Alterações</button></div>
-                        </form>
+                            <!-- O botão de salvar e os campos de senha foram removidos -->
+                        </div>
                     </div>
                 </div>
             </div>
