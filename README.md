@@ -22,6 +22,7 @@ O backend foi implementado com Spring Boot e organiza a lógica em três camadas
 - [x] Cadastro de clientes
 - [x] Registro de depósitos e saques
 - [x] Validação de CPF, email e senha
+- [x] Banco de dados de clientes
 - [x] Histórico de transações em arquivo
 - [x] Endpoints REST (Spring Controller)
 - [x] Testes unitários com JUnit 5
@@ -43,12 +44,12 @@ O backend foi implementado com Spring Boot e organiza a lógica em três camadas
   - Permitir que novos estados sejam adicionados facilmente sem alterar o código existente.
 
 - Persistência de Dados em Arquivo
-- A decisão de persistir as informações em arquivos de texto foi motivada pela simplicidade e pela necessidade de manter um histórico confiável das transações.
+- A decisão de persistir as informações em arquivo .json foi motivada pela simplicidade e pela necessidade de manter um banco de dados confiável para salvar informações dos clientes.
 - Essa escolha foi importante para:
-  - Permitir registrar depósitos e saques de forma permanente, sem depender apenas da memória da aplicação.
-  - Garantir que, mesmo após reiniciar o sistema, seja possível consultar o histórico de movimentações.
-  - Simular, em uma situação hipotética, a forma como o site poderia monitorar perdas e ganhos, fornecendo uma visão clara da saúde financeira do sistema.
-  - Ser uma alternativa leve ao uso de banco de dados, suficiente para os objetivos didáticos deste projeto.
+  - Permitir registrar clientes de forma permanente, sem depender apenas da memória da aplicação.
+  - Garantir que, mesmo após reiniciar o sistema, seja possível fazer o login com conta registrada anteriormente.
+  - Manter o saldo e as movimentações do cliente intactas.
+  - Ser uma alternativa leve ao uso de SQL por exemplo, suficiente para os objetivos didáticos deste projeto.
 
 ## Tecnologias
 - Java 17
