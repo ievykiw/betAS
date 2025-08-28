@@ -69,7 +69,7 @@
                 <div
                     class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
                     <div class="d-flex align-items-center my-3 my-sm-0">
-                        <a href="/api/home" class="navbar-brand d-flex align-items-center w-50 p-3">
+                        <a href="/home" class="navbar-brand d-flex align-items-center w-50 p-3">
                             <img src="/assets/logo.svg" alt="logo" class="img-fluid">
                         </a>
                     </div>
@@ -111,7 +111,7 @@
 
                             <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
                                 <li><a href="/info/usuario" class="dropdown-item">Perfil</a></li>
-                                <li><a href="/api/menu" class="dropdown-item">Sair</a></li>
+                                <li><a href="/menu" class="dropdown-item">Sair</a></li>
 
                             </ul>
                         </li>
@@ -328,7 +328,7 @@
 
                 // Atualiza textos de resultado
                 document.getElementById('result-unit').textContent =
-                    `${result.dadoAzul1} | ${result.dadoAzul2}` + "\n" + `${result.dadoVerde1} | ${result.dadoVerde2}`;
+                    `${result.dadoAzul1} | ${result.dadoAzul2} | ${result.dadoVerde1} | ${result.dadoVerde2}`;
                 document.getElementById('result-categoric').textContent =
                     `Azul: ${result.dadoAzul1 + result.dadoAzul2}` + "\n" + `Verde: ${result.dadoVerde1 + result.dadoVerde2}`;
                 document.getElementById('result-global').textContent =
